@@ -1,0 +1,1 @@
+export const barColor: string[] = ["#FFF8DB", "#FFC7ED", "#BBE9FF", "#D6E9AA", "#B1AFFF", "#FFC39B", "#e0aaff"];

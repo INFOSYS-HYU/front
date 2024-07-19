@@ -66,3 +66,12 @@
 	font-display: swap;
 	src: local('Pretendard Thin'), url(/assets/fonts/woff2/Pretendard-Thin.woff2) format('woff2'), url(/fonts/woff/Pretendard-Thin.woff) format('woff');
 }
+
+
+body {
+	-ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

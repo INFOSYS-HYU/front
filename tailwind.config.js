@@ -1,8 +1,17 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+module.exports = {
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   theme: {
     extend: {
+      screens: {
+        mobile: "1120px",
+      },
       dropShadow: {
         "white-md": "0 0px 3px rgba(255,255,255,0.75)",
         "white-lg": "0 0px 5px rgba(255,255,255.1)",
@@ -12,7 +21,6 @@ export default {
       },
       backgroundColor: {
         "hanyang-blue": "#0E4A84",
-        "hipe-blue":"#78D4FC"
       },
     },
   },

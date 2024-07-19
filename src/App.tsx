@@ -1,34 +1,24 @@
-import { Routes, Route } from 'react-router-dom'
-import Main from './pages/Main'
-import About from './pages/About'
-import RankPage from './pages/Rankpage'
-import Navbar from './components/ui/Navbar'
-import Footer from './components/ui/Footer'
-import SignUp from './pages/auth/signup'
-import SignIn from './pages/auth/signin'
-import MyPage from './pages/mypage'
-import BoardList from './pages/board/BoardList.tsx'
+import { Route, Routes } from 'react-router-dom'
+import Home from '@/pages/home'
+import Gallery from '@/pages/activitiy/gallery'
+import NavigationBar from '@/components/navbar/navbar'
+import { BrowserRouter } from 'react-router-dom'
+
 function App() {
-  
   return (
-    <>    
-      <Navbar/>
+    <BrowserRouter>
+      <NavigationBar />
       <Routes>
-        <Route path='/' element={<Main />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/signin' element={<SignIn/>} />
-        <Route path='/rank' element={<RankPage />} />
-        <Route path='/mypage' element={<MyPage />} />
-        <Route path='/board'>
-          <Route path='list'>
-            <Route path='all' element={<BoardList/>}/>
-          </Route>
-          <Route path=':id' />
+        <Route path='/' element={<Home />} />
+        <Route path='/about'>
+          <Route path='organization' />
+        </Route>
+        <Route path='/activity'>
+          <Route path='gallery' element={<Gallery />} />
         </Route>
       </Routes>
-      <Footer/>
-    </>
+    </BrowserRouter>
+
   )
 }
 

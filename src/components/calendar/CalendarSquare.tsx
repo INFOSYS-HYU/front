@@ -49,7 +49,6 @@ export const CalendarSquare: React.FC<CalendarSquareProps> = React.memo(({ d, yy
     } else
         if (d < 1) {
             const dd = lastMonth + d
-            const dayEvents = events[yy]?.[mm - 1]?.[dd] || [];
 
             return (
                 <div
@@ -59,7 +58,6 @@ export const CalendarSquare: React.FC<CalendarSquareProps> = React.memo(({ d, yy
                 </div>
             )
         } else {
-            const dd = d - daysInMonth;
             return (<div
                 className={`cursor-pointer flex flex-col items-center h-36 pt-2 w-[14.2857142857%]`}
             >

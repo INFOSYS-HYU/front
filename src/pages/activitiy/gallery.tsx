@@ -28,9 +28,9 @@ const Gallery: React.FC = () => {
   }
   return (
     <div className="bg-white w-full min-h-[150vh]">
-      <Banner />
-      <div className="m-auto mt-20 h-fit py-10 w-full mobile:w-[1000px] flex flex-col justify-center">
-        <h1 className="m-auto font-extrabold text-4xl font-pretendard my-20 ">정시템 갤러리</h1>
+      <Banner text='갤러리'/>
+      <div className="m-auto mt-4 h-fit py-10 w-full mobile:w-[1000px] flex flex-col justify-center">
+        <h1 className="mx-auto font-extrabold text-4xl font-pretendard my-20 ">정시템 갤러리</h1>
         <div className='w-fit m-auto grid grid-cols-1 md:grid-cols-2 mobile:grid-cols-3 content gap-5 gap-x-10'>
           {galleryData.map((gallery, index) =>
           (

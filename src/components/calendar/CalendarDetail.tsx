@@ -4,16 +4,16 @@ import Modal from "react-modal";
 import { CalendarSquare } from "./CalendarSquare";
 import { CalendarModal } from "./CalendarModal";
 import { useDays } from "@/hooks/useDays";
-import { Events } from "@/types/calendar";
+import { Event } from "@/types/calendar";
 import './calendar.css'
 
 interface CalendarDetailProps {
     date: Date;
-    events: Events;
+    events: Event[] | null;
     closeModal: () => void;
     modalIsOpen: boolean;
-    selectDate: any;
-    onSelectDate: (date: number) => void;
+    selectDate: Event[] | null;
+    onSelectDate: (date: Date) => void;
 }
 
 export const CalendarDetail: React.FC<CalendarDetailProps> = ({
@@ -27,13 +27,15 @@ export const CalendarDetail: React.FC<CalendarDetailProps> = ({
     const { yy, mm } = { yy: date.getFullYear(), mm: date.getMonth() };
     const days = useDays(yy, mm);
 
+    const weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+
     return (
         <div className="w-full mt-4 max-w-[1120px] m-auto">
             <div className="mt-2 text-black w-full relative text-xs mobile:text-base z-10 border-black">
                 <div className="border-y border-y-black leading-10 mb-3">
                     <div className="w-full flex text-center">
-                        {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day,idx) => (
-                            <span key={idx+200} className="flex-1">{day}</span>
+                        {weekDays.map((day, idx) => (
+                            <span key={idx} className="flex-1">{day}</span>
                         ))}
                     </div>
                 </div>

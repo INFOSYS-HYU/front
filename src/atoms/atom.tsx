@@ -20,6 +20,11 @@ export const calendarSelectDateState = atom<Event[]|null>({
     default: null,
 })
 
+export const calendarEventState = atom<Event[] | null>({
+    key: "calendarEventState",
+    default:null,
+})
+
 //갤러리
 export const galleryModalState = atom<boolean>({
     key: 'galleryModalState',

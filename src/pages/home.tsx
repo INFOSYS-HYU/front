@@ -3,6 +3,8 @@ import { Calendar } from "@/components/calendar/Calendar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaCalendarAlt, FaChevronRight } from 'react-icons/fa';
+import NoticeAdd from "@/components/notice/addNotice";
+import { Link } from "react-router-dom";
 
 export default function Home() {
     type NoticeType = {
@@ -48,10 +50,10 @@ export default function Home() {
                                 </div>
                             </div>
                             <div className="bg-gray-100 px-6 py-4">
-                                <a href="#" className="text-[#0E4A84] font-semibold flex items-center justify-between hover:underline">
+                                <Link to={`notice/:${notice.id}`} className="text-[#0E4A84] font-semibold flex items-center justify-between hover:underline">
                                     자세히 보기
                                     <FaChevronRight />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     ))}
@@ -61,6 +63,7 @@ export default function Home() {
                         <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white"></div>
                     </div>
                 }
+                <NoticeAdd/>
             </div>
             <Calendar />
         </main>

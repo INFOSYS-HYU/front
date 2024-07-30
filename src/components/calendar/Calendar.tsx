@@ -1,24 +1,30 @@
 'use client'
 import { useRecoilState } from "recoil";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { calendarDateState, calendarModalState, calendarSelectDateState } from '@/atoms/atom'
+import { calendarDateState, calendarModalState, calendarEventState,calendarSelectDateState } from '@/atoms/atom'
 import { convertMtoStr } from "@/utils/dateUtils";
 import { CalendarDetail } from "@/components/calendar/CalendarDetail";
-import { events } from '@/data/calendarEvents';
+import { eventsdata } from '@/data/calendarEvents';
+import { useEffect } from "react";
 
 export const Calendar = () => {
+
+
     const [date, setDate] = useRecoilState(calendarDateState);
     const [modalIsOpen, setModalIsOpen] = useRecoilState(calendarModalState);
     const [selectDate, setSelectDate] = useRecoilState(calendarSelectDateState);
-
+    const [events, setEvents] = useRecoilState(calendarEventState);
     const yy = date.getFullYear();
     const mm = date.getMonth();
+    useEffect(() => {
+        setEvents(eventsdata);
+    },[])
 
     const onPrevClick = () => setDate(new Date(yy, mm - 1, 1));
     const onNextClick = () => setDate(new Date(yy, mm + 1, 1));
     
-    const onSelectDate = (date: number) => {
-        setSelectDate(events[yy]?.[mm]?.[date]);
+    const onSelectDate = (date: Date) => {
+        setSelectDate(() => events?.filter(v =>  v.startDate <= date && v.endDate >= date)||[]);
         setModalIsOpen(true);
     };
     

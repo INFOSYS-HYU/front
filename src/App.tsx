@@ -7,6 +7,7 @@ import Organization from "./pages/about/organization.tsx";
 import Footer from "./components/ui/footer.tsx";
 import NoticeList from "./pages/notice/NoticeList.tsx";
 import Notice from "./pages/notice/Notice.tsx";
+import Faq from "./pages/faq/Faq.tsx";
 
 function Layout() {
   return (
@@ -31,6 +32,7 @@ function App() {
         </Route>
         <Route path="/noticelist" element={<NoticeList />} />
         <Route path="/notice" element={<Notice />} />
+        <Route path="/faq" element={<Faq />} />
       </Route>
     </Routes>
   );

@@ -13,11 +13,14 @@ module.exports = {
         gray: {
           1: "hsl(var(--gray-1))",
           4: "hsl(var(--gray-4))",
+          6: "hsl(var(--gray-6))",
         },
+        darkgray: "hsl(var(--darkgray))",
       },
       width: {
         notice: "476px",
         noticelist: "912px",
+        faq: "944px",
       },
       screens: {
         mobile: "1120px",

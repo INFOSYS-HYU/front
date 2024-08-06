@@ -29,9 +29,8 @@ function App() {
         <Route path="/activity">
           <Route path="gallery" element={<Gallery />} />
         </Route>
-        <Route path="/notice" element={<NoticeList />}>
-          <Route path="notice" element={<Notice />} />
-        </Route>
+        <Route path="/noticelist" element={<NoticeList />} />
+        <Route path="/notice" element={<Notice />} />
       </Route>
     </Routes>
   );

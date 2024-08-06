@@ -9,6 +9,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        gray: {
+          1: "hsl(var(--gray-1))",
+          4: "hsl(var(--gray-4))",
+        },
+      },
+      width: {
+        notice: "476px",
+        noticelist: "912px",
+      },
       screens: {
         mobile: "1120px",
       },

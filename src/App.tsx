@@ -8,8 +8,8 @@ import Footer from "./components/ui/footer.tsx";
 import NoticeList from "./pages/Notice/NoticeList.tsx";
 import Notice from "./pages/Notice/Notice.tsx";
 import Faq from "./pages/Faq/Faq.tsx";
-import Login from "./pages/auth/Login.tsx";
-import Mypage from "./pages/auth/Mypage.tsx";
+import Login from "./pages/Auth/Login.tsx";
+import Mypage from "./pages/Auth/Mypage.tsx";
 
 function Layout() {
   return (

@@ -83,18 +83,25 @@
     url(/fonts/woff/Pretendard-Thin.woff) format("woff");
 }
 
-body {
-  -ms-overflow-style: none;
+@layer base {
+  :root {
+    --gray-1: 240 2% 57%;
+    --gray-4: 240 6% 83%;
+    --gray-6: 240 24% 96%;
+
+    --primary: 0 0 0 87%;
+  }
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
+@layer base {
+  * {
+    @apply font-pretendard;
+  }
+  body {
+    -ms-overflow-style: none;
+  }
 
-:root {
-  --gray-1: 240 2% 57%;
-  --gray-4: 240 6% 83%;
-  --gray-6: 240 24% 96%;
-
-  --darkgray: 0 0 28%;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }

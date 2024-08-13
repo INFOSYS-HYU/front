@@ -1,13 +1,13 @@
 import { Outlet, Route, Routes } from "react-router-dom";
-import Home from "@/pages/home";
-import Gallery from "@/pages/activitiy/gallery";
+import Home from "@/pages/Main/Main.tsx";
+import Gallery from "@/pages/Activitiy/Gallery.tsx";
 import NavigationBar from "@/components/navbar/navbar";
-import About from "./pages/about/about";
-import Organization from "./pages/about/organization.tsx";
+import About from "./pages/About/About.tsx";
+import Organization from "./pages/About/Organization.tsx";
 import Footer from "./components/ui/footer.tsx";
-import NoticeList from "./pages/notice/NoticeList.tsx";
-import Notice from "./pages/notice/Notice.tsx";
-import Faq from "./pages/faq/Faq.tsx";
+import NoticeList from "./pages/Notice/NoticeList.tsx";
+import Notice from "./pages/Notice/Notice.tsx";
+import Faq from "./pages/Faq/Faq.tsx";
 
 function Layout() {
   return (

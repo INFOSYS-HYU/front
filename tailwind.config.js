@@ -15,7 +15,7 @@ module.exports = {
           4: "hsl(var(--gray-4))",
           6: "hsl(var(--gray-6))",
         },
-        darkgray: "hsl(var(--darkgray))",
+        primary: "hsl(var(--primary))",
       },
       width: {
         notice: "476px",

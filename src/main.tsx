@@ -5,16 +5,18 @@ import './index.css'
 import { RecoilRoot } from 'recoil';
 import { BrowserRouter } from 'react-router-dom'
 import ScrollToTop from './utils/scrollTop.tsx';
+import { AuthProvider } from './services/AuthProvider.tsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <RecoilRoot>
-        <ScrollToTop />
-
-        <App />
-      </RecoilRoot>
+      <AuthProvider>
+        <RecoilRoot>
+          <ScrollToTop />
+          <App />
+        </RecoilRoot>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )

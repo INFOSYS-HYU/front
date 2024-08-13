@@ -8,6 +8,8 @@ import Footer from "./components/ui/footer.tsx";
 import NoticeList from "./pages/Notice/NoticeList.tsx";
 import Notice from "./pages/Notice/Notice.tsx";
 import Faq from "./pages/Faq/Faq.tsx";
+import Login from "./pages/auth/Login.tsx";
+import Mypage from "./pages/auth/Mypage.tsx";
 
 function Layout() {
   return (
@@ -33,7 +35,10 @@ function App() {
         <Route path="/noticelist" element={<NoticeList />} />
         <Route path="/notice" element={<Notice />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/mypage" element={<Mypage/>}/>
       </Route>
+
     </Routes>
   );
 }

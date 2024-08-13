@@ -111,7 +111,7 @@ const Sidemenu = ({ menu, setMenu, pathname }:sidemenuProps) => {
                         <div className="mt-4 h-fit">
                             <div
                                 onClick={() => handleToggle(3)}
-                                className={`text-xl p-1 font-pretendard${isopen[3] ? "border-b-blue-300 border-b-2" : "border-none"}`}
+                                className={`text-xl p-1 font-pretendard ${isopen[3] ? "border-b-blue-300 border-b-2" : "border-none"}`}
                             >
                                 Wiki
                             </div>

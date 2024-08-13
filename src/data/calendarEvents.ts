@@ -6,7 +6,6 @@ export const eventsdata: Event[] = [
     title: "제목 학원 행사",
     startDate: new Date("2024-07-03"),
     endDate: new Date("2024-07-14"),
-    color: 0,
     desc: " ",
   },
   {
@@ -14,7 +13,6 @@ export const eventsdata: Event[] = [
     title: "벛꽃 행사",
     startDate: new Date("2024-07-04"),
     endDate: new Date("2024-07-13"),
-    color: 1,
     desc: "뭐머 해주세용",
   },
 
@@ -23,7 +21,6 @@ export const eventsdata: Event[] = [
     title: "중간 평가 기간",
     startDate: new Date("2024-07-05"),
     endDate: new Date("2024-07-08"),
-    color: 2,
     desc: "뭐머 해주세용",
   },
 
@@ -32,7 +29,6 @@ export const eventsdata: Event[] = [
     title: "23년후기 졸업 예정자 졸업 논문 제출 기간",
     startDate: new Date("2024-07-12"),
     endDate: new Date("2024-07-16"),
-    color: 4,
     desc: " ",
   },
 
@@ -41,7 +37,6 @@ export const eventsdata: Event[] = [
     title: "간식 행사",
     startDate: new Date("2024-07-16"),
     endDate: new Date("2024-07-16"),
-    color: 5,
     desc: " ",
   },
   {
@@ -49,7 +44,6 @@ export const eventsdata: Event[] = [
     title: "짝선짝후 미션 마감",
     startDate: new Date("2024-07-19"),
     endDate: new Date("2024-07-19"),
-    color: 6,
     desc: " ",
   },
   {
@@ -57,7 +51,6 @@ export const eventsdata: Event[] = [
     title: "1학기 중간 고사 기간",
     startDate: new Date("2024-07-22"),
     endDate: new Date("2024-07-26"),
-    color: 4,
     desc: " ",
   },
   {
@@ -65,7 +58,6 @@ export const eventsdata: Event[] = [
     title: "입대휴학자의",
     startDate: new Date("2024-07-22"),
     endDate: new Date("2024-07-22"),
-    color: 1,
     desc: " ",
   },
   {
@@ -73,7 +65,6 @@ export const eventsdata: Event[] = [
     title: "학기 인정 기준일",
     startDate: new Date("2024-07-22"),
     endDate: new Date("2024-07-22"),
-    color: 2,
     desc: " ",
   },
   {
@@ -81,7 +72,6 @@ export const eventsdata: Event[] = [
     title: "수강신청",
     startDate: new Date("2024-08-01"),
     endDate: new Date("2024-08-03"),
-    color: 1,
     desc: " ",
   },
   {
@@ -89,7 +79,6 @@ export const eventsdata: Event[] = [
     title: "이벤트 1",
     startDate: new Date("2024-08-01"),
     endDate: new Date("2024-08-02"),
-    color: 2,
     desc: " ",
   },
   {
@@ -97,14 +86,12 @@ export const eventsdata: Event[] = [
     title: "웹사이트 회의",
     startDate: new Date("2024-08-05"),
     endDate: new Date("2024-08-05"),
-    color: 3,
   },
   {
     id: 12,
     title: "제 3차 공학대회의 정보시스템학과 어쩌구 저쩌구",
     startDate: new Date("2024-08-08"),
     endDate: new Date("2024-08-18"),
-    color: 4,
     desc: " ",
   },
 ];

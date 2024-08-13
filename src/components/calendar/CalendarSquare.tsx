@@ -53,7 +53,7 @@ export const CalendarSquare: React.FC<CalendarSquareProps> = React.memo(({ d, yy
                                 key={`events-${index}`}
                                 className="h-5 mt-1 md:text-sm text-xs items-center flex px-1 md:px-3 text-nowrap overflow-visible rounded-md relative truncate"
                                 style={{
-                                    backgroundColor: eventFlag !== 3 && barColor[event.color],
+                                    backgroundColor: eventFlag !== 3 && barColor[event.id%7],
                                     width: `${eventFlag === 1 ? (Math.min(7 - Day, eventLength)) * 100 : eventFlag === 2 ? (Math.min(7 - Day, eventLength)) * 100 : 100}%`,
                                     zIndex: `${-d}`,
                                 }}

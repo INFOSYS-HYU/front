@@ -4,7 +4,6 @@ export type Event = {
   title: string,
   startDate: Date,
   endDate: Date;
-  color: number;
   desc?: string;
 };
 type MonthlyEvents = {

@@ -10,6 +10,8 @@ import Notice from "./pages/Notice/Notice.tsx";
 import Faq from "./pages/Faq/Faq.tsx";
 import Login from "./pages/Auth/login.tsx";
 import Mypage from "./pages/Auth/Mypage.tsx";
+import AdminRoute from "./services/AdminRoute.tsx";
+
 
 function Layout() {
   return (
@@ -36,7 +38,8 @@ function App() {
         <Route path="/notice" element={<Notice />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/mypage" element={<Mypage/>}/>
+        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/admin" element={<AdminRoute><About /></AdminRoute>} />
       </Route>
 
     </Routes>

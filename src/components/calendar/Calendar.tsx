@@ -6,10 +6,9 @@ import { convertMtoStr } from "@/utils/dateUtils";
 import { CalendarDetail } from "@/components/calendar/CalendarDetail";
 import { eventsdata } from '@/data/calendarEvents';
 import { useEffect } from "react";
+import axios from "axios";
 
 export const Calendar = () => {
-
-
     const [date, setDate] = useRecoilState(calendarDateState);
     const [modalIsOpen, setModalIsOpen] = useRecoilState(calendarModalState);
     const [selectDate, setSelectDate] = useRecoilState(calendarSelectDateState);

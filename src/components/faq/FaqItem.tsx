@@ -5,11 +5,23 @@ const FaqItem = () => {
   return (
     <div className="flex flex-col gap-5">
       <div
-        className={`w-full rounded-xl p-5 drop-shadow-md duration-400 ease-in-out ${
+        className={`w-full rounded-xl p-5 drop-shadow-md flex duration-400 ease-in-out ${
           active ? "bg-black" : "bg-gray-6"
         }`}
         onClick={() => setactive(!active)}
       >
+        <div className="relative ">
+          <div
+            className={`absolute w-3 h-0.5 rounded-full  rotate-45 ${
+              active ? "bg-white" : "bg-black"
+            }`}
+          ></div>
+          <div
+            className={`absolute left-4 w-3 h-0.5 rounded-full -rotate-45 ${
+              active ? "bg-white" : "bg-black"
+            }`}
+          ></div>
+        </div>
         <h1 className={`text-xl ${active ? "text-white" : "text-darkgray"}`}>
           질문 제목
         </h1>

@@ -1,5 +1,5 @@
 import { Outlet, Route, Routes } from "react-router-dom";
-import Home from "@/pages/Main/Main.tsx";
+import Main from "@/pages/Main/Main.tsx";
 import Gallery from "@/pages/Activitiy/Gallery.tsx";
 import NavigationBar from "@/components/navbar/navbar";
 import About from "./pages/About/About.tsx";
@@ -22,7 +22,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route index element={<Main />} />
         <Route path="/about">
           <Route path="" element={<About />} />
           <Route path="organization" element={<Organization />} />

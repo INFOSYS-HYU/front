@@ -10,17 +10,19 @@ const FaqItem = () => {
         }`}
         onClick={() => setactive(!active)}
       >
-        <div className="relative ">
-          <div
-            className={`absolute w-3 h-0.5 rounded-full  rotate-45 ${
-              active ? "bg-white" : "bg-black"
-            }`}
-          ></div>
-          <div
-            className={`absolute left-4 w-3 h-0.5 rounded-full -rotate-45 ${
-              active ? "bg-white" : "bg-black"
-            }`}
-          ></div>
+        <div className={`relative mr-2 w-5 flex justify-center items-center `}>
+          <div>
+            <div
+              className={`absolute w-3 h-0.5 rounded-full rotate-45 ${
+                active ? "top-[9px] bg-white" : "left-0 bg-black"
+              }`}
+            ></div>
+            <div
+              className={`absolute w-3 h-0.5 rounded-full -rotate-45 ${
+                active ? "bottom-[9px] bg-white" : "right-0 bg-black"
+              }`}
+            ></div>
+          </div>
         </div>
         <h1 className={`text-xl ${active ? "text-white" : "text-darkgray"}`}>
           질문 제목

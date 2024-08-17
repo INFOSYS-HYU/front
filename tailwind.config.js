@@ -21,6 +21,7 @@ module.exports = {
         notice: "476px",
         noticelist: "912px",
         faq: "944px",
+        finance: "892px",
       },
       screens: {
         mobile: "1120px",

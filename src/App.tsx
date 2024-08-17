@@ -11,6 +11,8 @@ import Faq from "./pages/Faq/Faq.tsx";
 import Login from "./pages/Auth/login.tsx";
 import Mypage from "./pages/Auth/Mypage.tsx";
 import AdminRoute from "./services/AdminRoute.tsx";
+import FinanceList from "./pages/Finance/FinanceList.tsx";
+import Finance from "./pages/Finance/Finance.tsx";
 
 function Layout() {
   return (
@@ -37,6 +39,10 @@ function App() {
           <Route path="" element={<NoticeList />} />
           <Route path="noticedetail" element={<Notice />} />
           <Route path="faq" element={<Faq />} />
+        </Route>
+        <Route path="/finance">
+          <Route path="" element={<FinanceList />} />
+          <Route path="financedetail" element={<Finance />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<Mypage />} />

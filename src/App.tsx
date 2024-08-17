@@ -12,7 +12,6 @@ import Login from "./pages/Auth/login.tsx";
 import Mypage from "./pages/Auth/Mypage.tsx";
 import AdminRoute from "./services/AdminRoute.tsx";
 
-
 function Layout() {
   return (
     <>
@@ -34,14 +33,22 @@ function App() {
         <Route path="/activity">
           <Route path="gallery" element={<Gallery />} />
         </Route>
-        <Route path="/noticelist" element={<NoticeList />} />
-        <Route path="/notice" element={<Notice />} />
-        <Route path="/faq" element={<Faq />} />
+        <Route path="/notice">
+          <Route path="" element={<NoticeList />} />
+          <Route path="noticedetail" element={<Notice />} />
+          <Route path="faq" element={<Faq />} />
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<Mypage />} />
-        <Route path="/admin" element={<AdminRoute><About /></AdminRoute>} />
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <About />
+            </AdminRoute>
+          }
+        />
       </Route>
-
     </Routes>
   );
 }

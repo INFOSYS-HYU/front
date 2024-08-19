@@ -39,10 +39,10 @@ function App() {
           <Route path="" element={<NoticeList />} />
           <Route path="noticedetail" element={<Notice />} />
           <Route path="faq" element={<Faq />} />
-        </Route>
-        <Route path="/finance">
-          <Route path="" element={<FinanceList />} />
-          <Route path="financedetail" element={<Finance />} />
+          <Route path="finance">
+            <Route path="" element={<FinanceList />} />
+            <Route path=":financeId" element={<Finance />} />
+          </Route>
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<Mypage />} />

@@ -2,7 +2,7 @@ import { getFinance } from "@/api/notice";
 import Banner from "@/components/ui/banner";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Slider from "react-slick";
 
 // example => finance
@@ -10,11 +10,8 @@ const example = {
   id: 1,
   year: 2024,
   month: 1,
-  image_url: "ddd",
+  image_url: ["1.jpg", "2.jpg", "5.png"],
 };
-
-// imageExamples => finance.image_url
-const imageExamples = ["1.jpg", "2.jpg", "5.png"];
 
 const Finance = () => {
   const param = useParams();
@@ -56,10 +53,10 @@ const Finance = () => {
         <div className="w-[600px] h-[600px] rounded-md mx-auto">
           <div className="slider-container w-[600px] h-[600px] rounded-md mx-auto">
             <Slider {...settings}>
-              {imageExamples.map((example, index) => (
+              {example.image_url.map((item, index) => (
                 <img
                   key={index}
-                  src={`/assets/images/${example}`}
+                  src={`/assets/images/${item}`}
                   alt="사진"
                   className="w-[600px] h-[600px] rounded-md"
                 />
@@ -68,9 +65,11 @@ const Finance = () => {
           </div>
         </div>
         <div className="flex justify-center mt-16">
-          <Button variant="contained" color="primary">
-            목록
-          </Button>
+          <Link to="/notice/finance">
+            <Button variant="contained" color="primary">
+              목록
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

@@ -23,6 +23,9 @@ module.exports = {
         faq: "944px",
         finance: "892px",
       },
+      height: {
+        notice: "476px",
+      },
       screens: {
         mobile: "1120px",
       },

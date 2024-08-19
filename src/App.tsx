@@ -36,8 +36,8 @@ function App() {
           <Route path="gallery" element={<Gallery />} />
         </Route>
         <Route path="/notice">
-          <Route path="" element={<NoticeList />} />
-          <Route path="noticedetail" element={<Notice />} />
+          <Route path=":paginationId" element={<NoticeList />} />
+          <Route path="noticeDetail/:noticeId" element={<Notice />} />
           <Route path="faq" element={<Faq />} />
           <Route path="finance">
             <Route path="" element={<FinanceList />} />

@@ -41,7 +41,6 @@ const Finance = () => {
 
   return (
     <div>
-      <Banner text="결산안" />
       <div className="w-finance mx-auto mb-20">
         <h1 className="text-2xl font-semibold text-center mb-6">
           {example.year}년도{" "}

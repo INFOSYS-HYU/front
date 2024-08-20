@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Banner({ text }: { text: string }) {
+export default function Banner({ text }: { text?: string }) {
   return (
     <div className="relative bg-black w-full h-64 flex justify-center items-stretch overflow-hidden mb-20">
       <div

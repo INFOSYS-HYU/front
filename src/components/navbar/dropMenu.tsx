@@ -49,7 +49,7 @@ const DropMenu = ({ nav_bg, navRef }: DropMenuProps) => {
         >
           <ul className="flex h-[100px] w-[160px] flex-col items-center gap-2 border-r pl-10 border-r-gray-300 border-opacity-20">
             <Link
-              to="/notice"
+              to="/notice/1"
               className="w-[160px] flex flex-col justify-center text-sm font-light hover:cursor-pointer hover:drop-shadow-white-lg transition-all duration-200"
             >
               공지사항

@@ -13,6 +13,14 @@ import Mypage from "./pages/Auth/Mypage.tsx";
 import AdminRoute from "./services/AdminRoute.tsx";
 import FinanceList from "./pages/Finance/FinanceList.tsx";
 import Finance from "./pages/Finance/Finance.tsx";
+import Admin from "./pages/Admin/Admin.tsx";
+import AdminNoticeList from "./pages/Admin/Notice/NoticeList.tsx";
+import AdminNotice from "./pages/Admin/Notice/Notice.tsx";
+import AdminFinance from "./pages/Admin/Finance/Finance.tsx";
+import AdminCalendar from "./pages/Admin/Calendar/Calendar.tsx";
+import AdminGallery from "./pages/Admin/Gallery/Gallery.tsx";
+import AdminLayout from "./pages/Admin/AdminLayout.tsx";
+import FinanceLayout from "./pages/Finance/FinanceLayout.tsx";
 
 function Layout() {
   return (
@@ -39,21 +47,31 @@ function App() {
           <Route path=":paginationId" element={<NoticeList />} />
           <Route path="noticeDetail/:noticeId" element={<Notice />} />
           <Route path="faq" element={<Faq />} />
-          <Route path="finance">
-            <Route path="" element={<FinanceList />} />
+          <Route path="finance" element={<FinanceLayout />}>
+            <Route index element={<FinanceList />} />
             <Route path=":financeId" element={<Finance />} />
           </Route>
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<Mypage />} />
-        <Route
+        {/* <Route
           path="/admin"
           element={
             <AdminRoute>
               <About />
             </AdminRoute>
           }
-        />
+        /> */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Admin />} />
+          <Route path="notice">
+            <Route path=":paginationId" element={<AdminNoticeList />} />
+            <Route path=":paginationId/:noticeId" element={<AdminNotice />} />
+          </Route>
+          <Route path="finance" element={<AdminFinance />} />
+          <Route path="calendar" element={<AdminCalendar />} />
+          <Route path="gallery" element={<AdminGallery />} />
+        </Route>
       </Route>
     </Routes>
   );

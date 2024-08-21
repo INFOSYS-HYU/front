@@ -37,7 +37,7 @@ export default function Organization() {
     return (
         <div className="bg-white min-h-screen">
             <Banner text="조직도" />
-            <div className="max-w-6xl mx-auto px-4 py-16">
+            <div className="max-w-5xl mx-auto px-4">
                 <div className="flex flex-wrap justify-center gap-4 mb-16">
                     {departments.map((dept, index) => (
                         <button

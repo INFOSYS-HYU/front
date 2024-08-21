@@ -29,7 +29,7 @@ export default function Home() {
 
 
   return (
-    <main className="relative z-1 bg-gradient-to-r from-black to-white">
+    <main className="relative z-1 Dirty_Beauty ">
       <BgMain />
       <div className="max-w-5xl mx-auto px-4 py-16">
         <h2 className="text-5xl text-white font-pretendard font-bold mb-12 text-center">
@@ -76,7 +76,9 @@ export default function Home() {
           </div>
         )}
       </div>
-      <Calendar />
+      <div className="py-10 bg-gray-50">
+        <Calendar />
+      </div>
     </main>
   );
 }

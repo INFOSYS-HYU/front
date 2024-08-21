@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import { Event } from "@/types/calendar";
-import { FaChevronDown, FaChevronUp, FaTimes } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { formatDate } from "@/utils/dateUtils";
 
-interface CalendarModalProps {
-    selectDate: Event[] | null;
-    closeModal: () => void;
-}
-
-export const CalendarModal: React.FC<CalendarModalProps> = ({ selectDate, closeModal }) => {
+export const CalendarModal = ({ selectDate }: { selectDate: Event[] | null }) => {
     const [openDescriptions, setOpenDescriptions] = useState<boolean[]>([]);
 
     function toggleDescription(index: number) {
@@ -20,36 +15,34 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ selectDate, closeM
     }
 
     return (
-        <div className="p-6 max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold">Events</h2>
-                <button onClick={closeModal} className="text-gray-500 hover:text-gray-700">
-                    <FaTimes size={24} />
-                </button>
-            </div>
-            {selectDate?.length ? (
-                selectDate.map((v, i) => (
-                    <div key={i} className="mb-4 border-b pb-4 last:border-b-0">
+        <div className="w-full h-full flex flex-col p-4 space-y-4">
+            {selectDate?.map((v, i) => {
+                return (
+                    <div key={i} className="bg-white rounded-lg shadow-md overflow-hidden">
                         <div 
-                            className="flex items-center justify-between cursor-pointer"
+                            className="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200"
                             onClick={() => toggleDescription(i)}
                         >
-                            <h3 className="text-lg font-semibold">{v.title}</h3>
-                            <div className="flex items-center space-x-2">
-                                <p className="text-sm text-gray-600">
-                                    {formatDate(v.startDate)} - {formatDate(v.endDate)}
-                                </p>
-                                {openDescriptions[i] ? <FaChevronUp /> : <FaChevronDown />}
+                            <div className="flex items-center space-x-4">
+                                <div className={`text-blue-500 transition-transform duration-200 ${openDescriptions[i] ? 'transform rotate-180' : ''}`}>
+                                    {openDescriptions[i] ? <FaChevronUp /> : <FaChevronDown />}
+                                </div>
+                                <h3 className="text-lg font-semibold text-gray-800">{v.title}</h3>
                             </div>
+                            <p className="text-sm text-gray-600">
+                                {formatDate(v.startDate)} ~ {formatDate(v.endDate)}
+                            </p>
                         </div>
-                        {openDescriptions[i] && (
-                            <p className="mt-2 text-gray-700">{v.desc}</p>
-                        )}
+                        <div 
+                            className={`px-4 overflow-hidden transition-all duration-300 ease-in-out ${
+                                openDescriptions[i] ? 'max-h-80 py-4' : 'max-h-0 py-0'
+                            }`}
+                        >
+                            <p className="text-gray-700">{v.desc}</p>
+                        </div>
                     </div>
-                ))
-            ) : (
-                <p className="text-gray-500">No events for this date.</p>
-            )}
+                );
+            })}
         </div>
     );
 };

@@ -5,16 +5,7 @@ export default function About() {
     return (
         <div className="bg-gray-50">
             <Banner text={"소개"} />
-            <div className="text-center flex flex-col items-center text-lg py-20 min-h-screen font-pretendard max-w-4xl px-4 mx-auto">
-                <motion.h1 
-                    initial={{opacity:0, y:60}} 
-                    animate={{opacity:1, y:0}} 
-                    transition={{duration:0.8, ease:easeInOut}}
-                    className="text-5xl font-bold text-gray-800 mb-12"
-                >
-                    인사말
-                </motion.h1>
-                
+            <div className="text-center flex flex-col items-center text-lg min-h-screen font-pretendard max-w-4xl px-4 mx-auto">        
                 <motion.div 
                     initial={{opacity:0, y:40}} 
                     animate={{opacity:1, y:0}} 

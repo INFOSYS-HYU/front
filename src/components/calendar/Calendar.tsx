@@ -36,7 +36,7 @@ export const Calendar: React.FC = () => {
   const closeModal = useCallback(() => setModalIsOpen(false), [setModalIsOpen]);
 
   return (
-    <div className="w-full bg-gray-50 py-10">
+    <div className="w-full bg-gray-50">
       <div className="mx-auto flex flex-col max-w-5xl w-full text-gray-800 px-4 sm:px-6 lg:px-8 font-pretendard">
         <div className="flex justify-between items-center w-full mb-4">
           <h2 className="text-4xl sm:text-5xl font-bold">{convertMtoStr(mm)}</h2>

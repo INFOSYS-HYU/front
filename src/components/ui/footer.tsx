@@ -10,7 +10,7 @@ export default function Footer() {
                     <div>
                         <h3 className="text-xl font-bold mb-4">HYU InfoSys</h3>
                         <p className="text-gray-400 mb-2">&copy; 2024 hyuinfosys All Rights Reserved.</p>
-                        <p className="text-gray-400">Made by 신윤수 이송희 홍현욱 김하윤 이지환</p>
+                        <p className="text-gray-400">Made by 신윤수 이송희 김승희 홍현욱 김하윤 이지환</p>
                     </div>
                     <div>
                         <h3 className="text-xl font-bold mb-4">Contact Us</h3>
@@ -40,12 +40,6 @@ export default function Footer() {
                     <div className="flex justify-center space-x-4 mb-4">
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition duration-300">
                             <FaInstagram size={24} />
-                        </a>
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition duration-300">
-                            <FaFacebook size={24} />
-                        </a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition duration-300">
-                            <FaTwitter size={24} />
                         </a>
                     </div>
                     <p className="text-gray-400">© 2024 HYU InfoSys. All rights reserved.</p>

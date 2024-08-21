@@ -57,8 +57,8 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<Mypage />} />
-        <Route path="/admin" element={<AdminRoute>
-          <AdminLayout /> </AdminRoute>}>
+        <Route path="/admin" element={
+          <AdminLayout />}>
           <Route index element={<Admin />} />
           <Route path="notice">
             <Route path=":paginationId" element={<AdminNoticeList />} />

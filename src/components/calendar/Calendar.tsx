@@ -1,4 +1,5 @@
 "use client";
+import React, { useEffect, useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import {
@@ -10,48 +11,43 @@ import {
 import { convertMtoStr } from "@/utils/dateUtils";
 import { CalendarDetail } from "@/components/calendar/CalendarDetail";
 import { eventsdata } from "@/data/calendarEvents";
-import { useEffect } from "react";
-import axios from "axios";
 
-export const Calendar = () => {
+export const Calendar: React.FC = () => {
   const [date, setDate] = useRecoilState(calendarDateState);
   const [modalIsOpen, setModalIsOpen] = useRecoilState(calendarModalState);
   const [selectDate, setSelectDate] = useRecoilState(calendarSelectDateState);
   const [events, setEvents] = useRecoilState(calendarEventState);
+  
   const yy = date.getFullYear();
   const mm = date.getMonth();
+
   useEffect(() => {
     setEvents(eventsdata);
-  }, []);
+  }, [setEvents]);
 
-  const onPrevClick = () => setDate(new Date(yy, mm - 1, 1));
-  const onNextClick = () => setDate(new Date(yy, mm + 1, 1));
+  const onPrevClick = useCallback(() => setDate(new Date(yy, mm - 1, 1)), [yy, mm, setDate]);
+  const onNextClick = useCallback(() => setDate(new Date(yy, mm + 1, 1)), [yy, mm, setDate]);
 
-  const onSelectDate = (date: Date) => {
-    setSelectDate(
-      () =>
-        events?.filter((v) => v.startDate <= date && v.endDate >= date) || []
-    );
+  const onSelectDate = useCallback((date: Date) => {
+    setSelectDate(events?.filter((v) => v.startDate <= date && v.endDate >= date) || []);
     setModalIsOpen(true);
-  };
+  }, [events, setSelectDate, setModalIsOpen]);
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
+  const closeModal = useCallback(() => setModalIsOpen(false), [setModalIsOpen]);
 
   return (
-    <div className="w-full bg-white pt-10">
-      <div className="m-auto flex flex-col max-w-[1264px] w-full text-black px-8 font-pretendard mt-10">
-        <div className="flex justify-between w-full mobile:px-10 px-1">
-          <div className="mobile:text-6xl text-5xl font-semibold">
-            {convertMtoStr(mm)}
-          </div>
-          <div className="flex flex-col text-4xl">
-            <div className="flex ml-2">
-              <IoIosArrowBack onClick={onPrevClick} />
-              <IoIosArrowForward onClick={onNextClick} />
-            </div>
-            {yy}
+    <div className="w-full bg-gray-50 py-10">
+      <div className="mx-auto flex flex-col max-w-5xl w-full text-gray-800 px-4 sm:px-6 lg:px-8 font-pretendard">
+        <div className="flex justify-between items-center w-full mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold">{convertMtoStr(mm)}</h2>
+          <div className="flex items-center space-x-4">
+            <button onClick={onPrevClick} className="p-2 rounded-full hover:bg-gray-200 transition-colors" aria-label="Previous month">
+              <IoIosArrowBack size={24} />
+            </button>
+            <span className="text-2xl font-medium">{yy}</span>
+            <button onClick={onNextClick} className="p-2 rounded-full hover:bg-gray-200 transition-colors" aria-label="Next month">
+              <IoIosArrowForward size={24} />
+            </button>
           </div>
         </div>
         <CalendarDetail

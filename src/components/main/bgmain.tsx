@@ -18,7 +18,7 @@ const BgMain = () => {
     fade: true,
     autoplay: true,
     autoplaySpeed: 5000,
-    appendDots: (dots) => (
+    appendDots: (dots:JSX.Element) => (
       <div
         style={{
           width: "100%",

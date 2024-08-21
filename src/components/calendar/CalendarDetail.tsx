@@ -27,19 +27,17 @@ export const CalendarDetail: React.FC<CalendarDetailProps> = ({
     const { yy, mm } = { yy: date.getFullYear(), mm: date.getMonth() };
     const days = useDays(yy, mm);
 
-    const weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+    const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     return (
-        <div className="w-full mt-4 max-w-[1120px] m-auto">
-            <div className="mt-2 text-black w-full relative text-xs mobile:text-base z-10 border-black">
-                <div className="border-y border-y-black leading-10 mb-3">
-                    <div className="w-full flex text-center">
-                        {weekDays.map((day, idx) => (
-                            <span key={idx} className="flex-1">{day}</span>
-                        ))}
-                    </div>
-                </div>
-                <div className="w-full h-fit flex flex-wrap">
+        <div className="w-full mt-4 max-w-5xl mx-auto">
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="grid grid-cols-7 gap-px bg-gray-200">
+                    {weekDays.map((day, idx) => (
+                        <div key={idx} className="bg-gray-100 text-center py-2 text-sm font-medium text-gray-600">
+                            {day}
+                        </div>
+                    ))}
                     {days.map(d => (
                         <CalendarSquare 
                             key={`curMonth-${d}`} 
@@ -56,11 +54,11 @@ export const CalendarDetail: React.FC<CalendarDetailProps> = ({
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
-                overlayClassName="custom-overlay"
-                className="custom-modal w-2/3 h-2/3 mobile:w-[540px] mobile:h-[700px] bg-white rounded-3xl"
+                overlayClassName="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center"
+                className="bg-white rounded-lg shadow-xl w-full max-w-md mx-4 outline-none"
                 ariaHideApp={false}
             >
-                <CalendarModal selectDate={selectDate} />
+                <CalendarModal selectDate={selectDate} closeModal={closeModal} />
             </Modal>
         </div>
     );

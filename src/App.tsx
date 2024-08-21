@@ -21,6 +21,7 @@ import AdminCalendar from "./pages/Admin/Calendar/Calendar.tsx";
 import AdminGallery from "./pages/Admin/Gallery/Gallery.tsx";
 import AdminLayout from "./pages/Admin/AdminLayout.tsx";
 import FinanceLayout from "./pages/Finance/FinanceLayout.tsx";
+import { Calendar } from "./components/calendar/Calendar.tsx";
 
 function Layout() {
   return (
@@ -42,6 +43,8 @@ function App() {
         </Route>
         <Route path="/activity">
           <Route path="gallery" element={<Gallery />} />
+          <Route path="calendar" element={<Calendar />} />
+
         </Route>
         <Route path="/notice">
           <Route path=":paginationId" element={<NoticeList />} />

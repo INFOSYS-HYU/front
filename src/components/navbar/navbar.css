@@ -1,13 +1,24 @@
-.nav_blur {
+.nav_background {
   background-color: black;
+  color: white;
 }
 
-.nav_first {
-  background-color: rgba(255,255,255,0.2);
+.nav_overlay {
+  position: fixed;
+  top: 60px; /* Navbar의 높이만큼 아래에서 시작 */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 40;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
 }
-.nav_items:hover + header.nav_blur,
-header.nav_blur:hover {
-  border-bottom: 1px outset #9ca3af;
+
+.nav_items:hover ~ .nav_overlay,
+.nav_drop:hover ~ .nav_overlay {
+  opacity: 1;
 }
 
 .nav_drop {
@@ -21,6 +32,11 @@ header.nav_blur:hover {
   height: 134px;
   transition: 0.3s ease-in-out;
   overflow: hidden;
+}
+
+.nav_items:hover + .nav_drop,
+.nav_drop:hover {
+  max-height: 134px;
 }
 
 .nav_items > li > a {

@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 interface NoticeItemProps {
   admin?: boolean;
   id: number;
-  paginationId: number;
   title: string;
   uploadDate: string;
+  paginationId?: number;
+
 }
 
 const NoticeItem = ({

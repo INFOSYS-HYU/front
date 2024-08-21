@@ -58,7 +58,7 @@ export const CalendarDetail: React.FC<CalendarDetailProps> = ({
                 className="bg-white rounded-lg shadow-xl w-full max-w-md mx-4 outline-none"
                 ariaHideApp={false}
             >
-                <CalendarModal selectDate={selectDate} closeModal={closeModal} />
+                <CalendarModal selectDate={selectDate}/>
             </Modal>
         </div>
     );

@@ -130,7 +130,7 @@ const Sidemenu = ({ menu, setMenu, pathname }:sidemenuProps) => {
                         </div>
                     </div>
                     <div>
-                        {/* <Link to="/login"><Login className="text-white" /></Link> */}
+                         <Link to="/login">Login</Link>
                     </div>
                 </div>
             </div>

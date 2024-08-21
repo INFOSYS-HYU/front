@@ -33,13 +33,13 @@ const examples = [
 ];
 
 const NoticeList = () => {
-  const params = useParams();
-  const [noticeList, setNoticeList] = useState([]);
+ // const params = useParams();
+//  const [noticeList, setNoticeList] = useState([]);
 
   useEffect(() => {
     const getNoticeList = async () => {
       try {
-        const paginationId = Number(params.noticeId);
+  //      const paginationId = Number(params.noticeId);
         // const res = await getAllNotice(paginationId);
         // setNoticeList(res.data);
       } catch (error) {

@@ -16,12 +16,12 @@ import Finance from "./pages/Finance/Finance.tsx";
 import Admin from "./pages/Admin/Admin.tsx";
 import AdminNoticeList from "./pages/Admin/Notice/NoticeList.tsx";
 import AdminNotice from "./pages/Admin/Notice/Notice.tsx";
-import AdminFinance from "./pages/Admin/Finance/Finance.tsx";
 import AdminCalendar from "./pages/Admin/Calendar/Calendar.tsx";
 import AdminGallery from "./pages/Admin/Gallery/Gallery.tsx";
 import AdminLayout from "./pages/Admin/AdminLayout.tsx";
 import FinanceLayout from "./pages/Finance/FinanceLayout.tsx";
 import CalendarPage from "./pages/Activitiy/Calendar.tsx";
+import AdminFinance from "./pages/Admin/Finance/Finance.tsx";
 
 function Layout() {
   return (
@@ -57,15 +57,8 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<Mypage />} />
-        {/* <Route
-          path="/admin"
-          element={
-            <AdminRoute>
-              <About />
-            </AdminRoute>
-          }
-        /> */}
-        <Route path="/admin" element={<AdminLayout />}>
+        <Route path="/admin" element={<AdminRoute>
+          <AdminLayout /> </AdminRoute>}>
           <Route index element={<Admin />} />
           <Route path="notice">
             <Route path=":paginationId" element={<AdminNoticeList />} />
@@ -75,6 +68,7 @@ function App() {
           <Route path="calendar" element={<AdminCalendar />} />
           <Route path="gallery" element={<AdminGallery />} />
         </Route>
+
       </Route>
     </Routes>
   );

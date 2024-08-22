@@ -23,7 +23,7 @@ export const getFinance = async ({
 export const getAllNotice = async (paginationId: number) => {
   return await axios.get(`${context}/api/notice/${paginationId}`);
 };
-// finance - 특정 결산안 가져오기
+// notice - 특정 공지사항 가져오기
 export const getNotice = async ({
   id,
   params,

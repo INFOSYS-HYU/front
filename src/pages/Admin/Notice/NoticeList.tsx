@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import NoticeItem from "@/components/notice/NoticeItem";
 import Banner from "@/components/ui/banner";
-import { Pagination, PaginationItem } from "@mui/material";
+import { Button, Pagination, PaginationItem } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import { getAllNotice } from "@/api/notice";
 
@@ -65,6 +65,11 @@ const NoticeList = () => {
             />
           ))}
         </div>
+        <Link to="/admin/notice/add" className="flex justify-center">
+          <Button size="large" variant="contained" color="primary">
+            추가하기
+          </Button>
+        </Link>
         <Pagination
           count={10}
           color="primary"

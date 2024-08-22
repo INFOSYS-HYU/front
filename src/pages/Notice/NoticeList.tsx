@@ -35,11 +35,11 @@ const examples = [
 const NoticeList = () => {
   const params = useParams();
   const [noticeList, setNoticeList] = useState([]);
+  const paginationId = Number(params.paginationId);
 
   useEffect(() => {
     const getNoticeList = async () => {
       try {
-        const paginationId = Number(params.noticeId);
         // const res = await getAllNotice(paginationId);
         // setNoticeList(res.data);
       } catch (error) {
@@ -58,6 +58,7 @@ const NoticeList = () => {
             <NoticeItem
               key={example.id}
               id={example.id}
+              paginationId={paginationId}
               title={example.title}
               uploadDate={example.upload_date}
             />

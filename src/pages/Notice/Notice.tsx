@@ -74,7 +74,7 @@ const Notice = ({}) => {
           </div>
         </div>
         <div className="flex justify-center">
-          <Link to="/notice">
+          <Link to={`/notice/${param.paginationId}`}>
             <Button size="large" variant="contained" color="primary">
               목록
             </Button>

@@ -3,6 +3,7 @@ import NoticeItem from "@/components/notice/NoticeItem";
 import Banner from "@/components/ui/banner";
 import { Pagination, PaginationItem } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
+import { getAllNotice } from "@/api/notice";
 
 const examples = [
   {
@@ -40,8 +41,12 @@ const NoticeList = () => {
   useEffect(() => {
     const getNoticeList = async () => {
       try {
-        // const res = await getAllNotice(paginationId);
-        // setNoticeList(res.data);
+        const res = await getAllNotice(paginationId);
+        // console.log(res);
+        if (res.data) {
+          setNoticeList(res.data);
+          console.log(noticeList);
+        }
       } catch (error) {
         console.log(error);
       }

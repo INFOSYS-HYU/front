@@ -21,8 +21,9 @@ const Finance = () => {
     const getFinanceData = async () => {
       try {
         const id = Number(param.financeId);
-        const params = { id: id };
-        // const res = await getFinance({ id, params });
+        // const params = { id: id };
+        const res = await getFinance({ id });
+        console.log(res.data);
         // setFinance(res.data);
       } catch (error) {
         console.log(error);

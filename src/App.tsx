@@ -24,7 +24,6 @@ import AdminGallery from "./pages/Admin/Gallery/Gallery.tsx";
 import AdminLayout from "./pages/Admin/AdminLayout.tsx";
 import FinanceLayout from "./pages/Finance/FinanceLayout.tsx";
 import CalendarPage from "./pages/Activitiy/Calendar.tsx";
-import AdminFinance from "./pages/Admin/Finance/Finance.tsx";
 
 function Layout() {
   return (

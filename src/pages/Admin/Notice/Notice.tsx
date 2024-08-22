@@ -75,11 +75,11 @@ const Notice = () => {
           <Button size="large" variant="outlined" color="primary">
             수정
           </Button>
-          <Link to={`/admin/notice/${param.paginationId}`}>
+          {/* <Link to={`/admin/notice/${param.paginationId}`}>
             <Button size="large" variant="contained" color="primary">
               목록
             </Button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </>

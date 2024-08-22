@@ -23,6 +23,7 @@ import AdminCalendar from "./pages/Admin/Calendar/Calendar.tsx";
 import AdminGallery from "./pages/Admin/Gallery/Gallery.tsx";
 import AdminLayout from "./pages/Admin/AdminLayout.tsx";
 import FinanceLayout from "./pages/Finance/FinanceLayout.tsx";
+import CalendarPage from "./pages/Activitiy/Calendar.tsx";
 
 function Layout() {
   return (

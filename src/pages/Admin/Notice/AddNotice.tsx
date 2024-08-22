@@ -4,33 +4,33 @@ interface Files {
   file: File;
 }
 
-const AddNotice = () => {
+const AdminAddNotice = () => {
   const [files, setFiles] = useState<File[]>([]);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newFiles = e.target.files;
 
-    if (newFiles) {
-      const fileArray: File[] = Array.from(newFiles).map((file) => ({
-        file: file,
-      }));
-      console.log(fileArray);
-      setFiles((prevfiles) => [...prevfiles, fileArray.file]);
-    }
+    //   if (newFiles) {
+    //     const fileArray: File[] = Array.from(newFiles).map((file) => ({
+    //       file: file,
+    //     }));
+    //     console.log(fileArray);
+    //     setFiles((prevfiles) => [...prevfiles, fileArray.file]);
+    //   }
+    // };
+
+    // const [files, setFiles] = useState<FileWithId[]>([]);
+
+    // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //   const selectedFiles = e.target.files;
+    //   if (selectedFiles) {
+    //     const newFiles: FileWithId[] = Array.from(selectedFiles).map((file) => ({
+    //       id: crypto.randomUUID(), // 고유한 ID 생성
+    //       file: file,
+    //     }));
+    //     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+    //   }
   };
-
-  // const [files, setFiles] = useState<FileWithId[]>([]);
-
-  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const selectedFiles = e.target.files;
-  //   if (selectedFiles) {
-  //     const newFiles: FileWithId[] = Array.from(selectedFiles).map((file) => ({
-  //       id: crypto.randomUUID(), // 고유한 ID 생성
-  //       file: file,
-  //     }));
-  //     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
-  //   }
-  // };
 
   return (
     <div>
@@ -90,4 +90,4 @@ const AddNotice = () => {
   );
 };
 
-export default AddNotice;
+export default AdminAddNotice;

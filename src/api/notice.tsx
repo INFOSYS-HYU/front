@@ -7,15 +7,9 @@ export const getAllFinance = async () => {
   return await axios.get(context + "/api/finance");
 };
 // finance - 특정 결산안 가져오기
-export const getFinance = async ({
-  id,
-  params,
-}: {
-  id: number;
-  params: { [key: string]: any };
-}) => {
-  return await axios.get(`${context}/api/finance/${id}`, {
-    params: params,
+export const getFinance = async ({ id }: { id: number }) => {
+  return await axios.get(`${context}/api/finance/`, {
+    params: { id: id },
   });
 };
 

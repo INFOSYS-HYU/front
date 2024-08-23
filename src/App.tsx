@@ -17,7 +17,7 @@ import Admin from "./pages/Admin/Admin.tsx";
 import AdminNoticeLayout from "./pages/Admin/Notice/NoticeLayout.tsx";
 import AdminNoticeList from "./pages/Admin/Notice/NoticeList.tsx";
 import AdminNotice from "./pages/Admin/Notice/Notice.tsx";
-import AdminAddNotice from "./pages/Admin/Notice/AddNotice.tsx";
+import AdminAddNotice from "./pages/Admin/Notice/AddNotice.tsx"
 import AdminFinance from "./pages/Admin/Finance/Finance.tsx";
 import AdminCalendar from "./pages/Admin/Calendar/Calendar.tsx";
 import AdminGallery from "./pages/Admin/Gallery/Gallery.tsx";

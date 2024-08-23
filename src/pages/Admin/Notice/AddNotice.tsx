@@ -1,92 +1,144 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
+import { 
+  TextField, 
+  Button, 
+  Box, 
+  Typography, 
+  Container, 
+  Paper,
+  ThemeProvider,
+  createTheme,
+  List,
+  ListItem,
+  ListItemText
+} from "@mui/material";
+import { Add as AddIcon, AttachFile as AttachFileIcon } from "@mui/icons-material";
+import { addNotice } from "../../../api/admin";
 
-interface Files {
-  file: File;
+interface InputType {
+  title: string;
+  content: string;
+  files: File[];
 }
 
-const AdminAddNotice = () => {
-  const [files, setFiles] = useState<File[]>([]);
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#000000', // 검정색
+    },
+    background: {
+      default: '#ffffff', // 흰색 배경
+      paper: '#f5f5f5', // 연한 회색 (선택적)
+    },
+    text: {
+      primary: '#000000', // 검정색 텍스트
+    },
+  },
+  typography: {
+    fontFamily: 'Roboto, "Helvetica Neue", Arial, sans-serif',
+  },
+});
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newFiles = e.target.files;
+const AdminAddNotice: React.FC = () => {
+  const [input, setInput] = useState<InputType>({
+    title: "",
+    content: "",
+    files: []
+  });
 
-    //   if (newFiles) {
-    //     const fileArray: File[] = Array.from(newFiles).map((file) => ({
-    //       file: file,
-    //     }));
-    //     console.log(fileArray);
-    //     setFiles((prevfiles) => [...prevfiles, fileArray.file]);
-    //   }
-    // };
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setInput(prev => ({ ...prev, [name]: value }));
+  };
 
-    // const [files, setFiles] = useState<FileWithId[]>([]);
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setInput(prev => ({ ...prev, files: Array.from(e.target.files || []) }));
+    }
+  };
 
-    // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //   const selectedFiles = e.target.files;
-    //   if (selectedFiles) {
-    //     const newFiles: FileWithId[] = Array.from(selectedFiles).map((file) => ({
-    //       id: crypto.randomUUID(), // 고유한 ID 생성
-    //       file: file,
-    //     }));
-    //     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
-    //   }
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      const result = await addNotice(input);
+      console.log('공지사항이 성공적으로 추가되었습니다:', result);
+      setInput({ title: "", content: "", files: [] });
+      // TODO: 성공 메시지 표시
+    } catch (error) {
+      console.error('공지사항 추가 실패:', error);
+      // TODO: 오류 메시지 표시
+    }
   };
 
   return (
-    <div>
-      <h3 className="text-2xl text-center mb-12">추가하기</h3>
-      <div className="w-[476px] p-8 border border-gray-4 rounded-xl mx-auto">
-        <form className="flex flex-col gap-3">
-          <div className="flex gap-6">
-            <label htmlFor="title" className="text-2xl text-nowrap">
-              공지사항 제목
-            </label>
-            <input
-              type="text"
-              id="title"
-              placeholder="제목"
-              className="w-full h-10 border-2 border-black rounded-md px-1"
-            />
-          </div>
-          <div className="flex gap-6">
-            <label htmlFor="uploadDate" className="text-2xl text-nowrap">
-              업로드한 날짜
-            </label>
-            <input
-              type="date"
-              id="uploadDate"
-              className="w-full h-10 border-2 border-black rounded-md px-1"
-            />
-          </div>
-          <div>
-            <label htmlFor="description" className="text-2xl text-nowrap">
-              내용
-            </label>
-            <textarea
-              id="description"
-              placeholder="내용"
-              className="w-full h-52 border-2 border-black rounded-md p-1"
-            />
-          </div>
-          <div className="flex gap-6">
-            <label htmlFor="uploadFile" className="text-2xl text-nowrap">
-              파일 선택
-            </label>
-            <input
-              type="file"
-              id="uploadFile"
-              onChange={handleFileUpload}
-              multiple
-            />
-          </div>
-          {/* <div>
-            {files.map((file) => (
-              <div key={file.id}>{file.file.name}</div>
-            ))}
-          </div> */}
-        </form>
-      </div>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Box sx={{ backgroundColor: 'background.default', minHeight: '100vh', py: 4 }}>
+        <Container maxWidth="md">
+          <Paper elevation={3} sx={{ p: 4, borderRadius: 2, backgroundColor: 'background.paper' }}>
+            <Typography variant="h4" component="h1" gutterBottom align="center" fontWeight="bold">
+              공지사항 추가
+            </Typography>
+            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="title"
+                label="공지사항 제목"
+                name="title"
+                autoFocus
+                value={input.title}
+                onChange={handleInputChange}
+                variant="outlined"
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="content"
+                label="내용"
+                id="content"
+                multiline
+                rows={6}
+                value={input.content}
+                onChange={handleInputChange}
+                variant="outlined"
+              />
+              <Button
+                variant="outlined"
+                component="label"
+                startIcon={<AttachFileIcon />}
+                sx={{ mt: 2, mb: 2 }}
+              >
+                파일 선택
+                <input
+                  type="file"
+                  hidden
+                  multiple
+                  onChange={handleFileChange}
+                />
+              </Button>
+              <List>
+                {input.files.map((file, index) => (
+                  <ListItem key={index}>
+                    <ListItemText primary={file.name} />
+                  </ListItem>
+                ))}
+              </List>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                startIcon={<AddIcon />}
+              >
+                공지사항 추가
+              </Button>
+            </Box>
+          </Paper>
+        </Container>
+      </Box>
+    </ThemeProvider>
   );
 };
 

@@ -24,7 +24,7 @@ const Finance = () => {
         // const params = { id: id };
         const res = await getFinance({ id });
         console.log(res.data);
-        // setFinance(res.data);
+        setFinance(res.data);
       } catch (error) {
         console.log(error);
       }
@@ -44,11 +44,12 @@ const Finance = () => {
     <div>
       <div className="w-finance mx-auto mb-20">
         <h1 className="text-2xl font-semibold text-center mb-6">
-          {example.year}년도{" "}
+          {finance.title}
+          {/* {example.year}년도{" "} */}
           {/* {example.quarter ? `${example.quarter}분기` : `${example.month}월`} */}
-          {"quarter" in example && example.quarter
-            ? `${example.quarter}분기`
-            : `${example.month}월`}
+          {/* {"quarter" in finance && finance.quarter
+            ? `${finance.quarter}분기`
+            : `${finance.month}월`} */}
         </h1>
         <div className="w-[600px] h-[600px] rounded-md mx-auto">
           <div className="slider-container w-[600px] h-[600px] rounded-md mx-auto">

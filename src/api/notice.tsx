@@ -8,9 +8,7 @@ export const getAllFinance = async () => {
 };
 // finance - 특정 결산안 가져오기
 export const getFinance = async ({ id }: { id: number }) => {
-  return await axios.get(`${context}/api/finance/`, {
-    params: { id: id },
-  });
+  return await axios.get(`${context}/api/finance/${id}`);
 };
 
 // notice - 페이지별로 전체 공지사항 가져오기
@@ -18,16 +16,8 @@ export const getAllNotice = async (page: number) => {
   return await axios.get(`${context}/api/notice/${page}`);
 };
 // notice - 특정 공지사항 가져오기
-export const getNotice = async ({
-  id,
-  params,
-}: {
-  id: number;
-  params: { [key: string]: any };
-}) => {
-  return await axios.get(`${context}/api/notice/${id}`, {
-    params: params,
-  });
+export const getNotice = async ({ id }: { id: number }) => {
+  return await axios.get(`${context}/api/notice/detail/${id}`);
 };
 
 // notice - 새 공지사항 생성 이건 이미지까지 받아야함

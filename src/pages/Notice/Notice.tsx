@@ -24,9 +24,10 @@ const Notice = ({}) => {
     const getNoticeData = async () => {
       try {
         const id = Number(param.noticeId);
-        const params = { id: id };
-        // const res = await getNotice({ id, params });
-        // setNotice(res.data)
+        // const params = { id: id };
+        const res = await getNotice({ id });
+        console.log(res.data);
+        setNotice(res.data);
       } catch (error) {
         console.log(error);
       }
@@ -61,16 +62,14 @@ const Notice = ({}) => {
           </div>
         </div>
         <div className="w-full p-8 border-2 border-gray-4 rounded-xl flex flex-col gap-5">
-          <h1 className="text-xl font-semibold">{example.title}</h1>
+          <h1 className="text-xl font-semibold">{notice.title}</h1>
           <h2 className="text-base text-gray-1 font-semibold mb-1">
-            {example.upload_date}
+            {notice.date}
           </h2>
           <div className="min-h-28">
-            {example.description.map((item, index) => (
-              <p key={index} className="text-wrap">
-                {item}
-              </p>
-            ))}
+            <p className="text-wrap">{notice.desc}</p>
+            {/* {notice.desc.map((item, index) => (
+            ))} */}
           </div>
         </div>
         <div className="flex justify-center">

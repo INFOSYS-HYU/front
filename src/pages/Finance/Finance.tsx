@@ -1,4 +1,5 @@
-import { getFinance } from "@/api/notice";
+import { getFinance } from "@/api/finance";
+import {  } from "@/api/notice";
 import Banner from "@/components/ui/banner";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -23,8 +24,8 @@ const Finance = () => {
         const id = Number(param.financeId);
         // const params = { id: id };
         const res = await getFinance({ id });
-        console.log(res.data);
-        setFinance(res.data);
+        console.log(res);
+        setFinance(res);
       } catch (error) {
         console.log(error);
       }

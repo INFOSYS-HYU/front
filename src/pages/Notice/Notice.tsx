@@ -1,4 +1,4 @@
-import { getNotice } from "@/api/notice";
+import { getNotice, NoticeType } from "@/api/notice";
 import Banner from "@/components/ui/banner";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -16,18 +16,18 @@ const example = {
   image_url: ["1.jpg", "2.jpg", "5.png"],
 };
 
-const Notice = ({}) => {
+const Notice = () => {
   const param = useParams();
-  const [notice, setNotice] = useState({});
+  const [notice, setNotice] = useState<NoticeType>();
 
   useEffect(() => {
     const getNoticeData = async () => {
       try {
         const id = Number(param.noticeId);
         // const params = { id: id };
-        const res = await getNotice({ id });
-        console.log(res.data);
-        setNotice(res.data);
+        const res = await getNotice(id);
+        console.log(res);
+        setNotice(res);
       } catch (error) {
         console.log(error);
       }

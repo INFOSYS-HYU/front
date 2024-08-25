@@ -2,85 +2,70 @@ import { useEffect, useState } from "react";
 import NoticeItem from "@/components/notice/NoticeItem";
 import Banner from "@/components/ui/banner";
 import { Pagination, PaginationItem } from "@mui/material";
-import { Link, useParams } from "react-router-dom";
-import { getAllNotice } from "@/api/notice";
-
-// const examples = [
-//   {
-//     id: 1,
-//     title: "공지사항 제목 1",
-//     upload_date: "2024.07.22.월",
-//   },
-//   {
-//     id: 2,
-//     title: "공지사항 제목 2",
-//     upload_date: "2024.07.23.화",
-//   },
-//   {
-//     id: 3,
-//     title: "공지사항 제목 3",
-//     upload_date: "2024.07.24.수",
-//   },
-//   {
-//     id: 4,
-//     title: "공지사항 제목 4",
-//     upload_date: "2024.07.25.목",
-//   },
-//   {
-//     id: 5,
-//     title: "공지사항 제목 5",
-//     upload_date: "2024.07.26.금",
-//   },
-// ];
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { getAllNotice, NoticeType } from "@/api/notice";
 
 const NoticeList = () => {
-  const params = useParams();
-  const [noticeList, setNoticeList] = useState([]);
-  const paginationId = Number(params.paginationId);
+  const { page = "1" } = useParams();
+  const navigate = useNavigate();
+  const [noticeList, setNoticeList] = useState<NoticeType[]>([]);
+  const [currentPage, setCurrentPage] = useState(Number(page));
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    const getNoticeList = async () => {
+    const fetchNotices = async () => {
       try {
-        const res = await getAllNotice(paginationId);
-        // console.log(res);
-        if (res.data) {
-          setNoticeList(res.data);
-          console.log(noticeList);
+        const res = await getAllNotice(currentPage);
+        if (res) {
+          setNoticeList(res.notices);
+          setTotalPages(res.totalPages);
         }
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching notices:", error);
       }
     };
-    getNoticeList();
-  }, []);
+
+    fetchNotices();
+  }, [currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(Number(page));
+  }, [page]);
+
+  const handlePageChange = (event, value) => {
+    navigate(`/notice/${value}`);
+  };
 
   return (
     <>
       <Banner text="공지사항" />
       <div className="w-noticelist mx-auto flex flex-col gap-16 mb-20">
-        <div className="w-full flex flex-col gap-5 ">
+        <div className="w-full flex flex-col gap-5">
           {noticeList.map((item) => (
             <NoticeItem
               key={item.id}
               id={item.id}
-              paginationId={paginationId}
               title={item.title}
               uploadDate={item.date}
             />
           ))}
         </div>
-        <Pagination
-          count={10}
-          color="primary"
-          renderItem={(item) => (
-            <PaginationItem
-              component={Link}
-              to={`/notice/${item.page}`}
-              {...item}
-            />
-          )}
-          className="mx-auto"
-        />
+        {totalPages > 1 && (
+          <Pagination
+            count={totalPages}
+            page={currentPage}
+            color="primary"
+            onChange={handlePageChange}
+            renderItem={(item) => (
+              <PaginationItem
+                component={Link}
+                to={`/notice/${item.page}`}
+                {...item}
+              />
+            )}
+            className="mx-auto"
+          />
+        )}
       </div>
     </>
   );

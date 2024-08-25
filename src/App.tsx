@@ -48,21 +48,22 @@ function App() {
           <Route path="calendar" element={<CalendarPage />} />
         </Route>
         <Route path="/notice">
-          <Route path=":paginationId" element={<NoticeList />} />
-          <Route path=":paginationId/:noticeId" element={<Notice />} />
-          <Route path="faq" element={<Faq />} />
-          <Route path="finance" element={<FinanceLayout />}>
-            <Route index element={<FinanceList />} />
-            <Route path=":financeId" element={<Finance />} />
-          </Route>
+          <Route path=":page" element={<NoticeList />} />
+          <Route path="detail/:noticeId" element={<Notice />} />
         </Route>
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/finance" element={<FinanceLayout />}>
+          <Route index element={<FinanceList />} />
+          <Route path=":financeId" element={<Finance />} />
+        </Route>
+
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Admin />} />
           <Route path="notice" element={<AdminNoticeLayout />}>
             <Route path=":paginationId" element={<AdminNoticeList />} />
-            <Route path=":paginationId/:noticeId" element={<AdminNotice />} />
+            <Route path=":noticeId" element={<AdminNotice />} />
             <Route path="add" element={<AdminAddNotice />} />
           </Route>
           <Route path="finance" element={<AdminFinance />} />

@@ -1,6 +1,6 @@
 import FinanceItem from "@/components/finance/FinanceItem";
 import { useEffect, useState } from "react";
-import { getAllFinance } from "@/api/notice";
+import { getAllFinance } from "@/api/finance";
 
 interface Finance {
   id: number;
@@ -17,7 +17,7 @@ const FinanceList = () => {
       try {
         const res = await getAllFinance();
         // console.log(res.data.response);
-        setFinanceList(res.data.response);
+        setFinanceList(res);
         financeList && console.log(financeList);
       } catch (error) {
         console.log(error);

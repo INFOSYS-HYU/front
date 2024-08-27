@@ -24,7 +24,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative z-1 Dirty_Beauty ">
+    <main className="relative z-1 bg-gradient-to-b from-gray-200 to-gray-900">
       <BgMain />
       <div className="max-w-5xl mx-auto px-4 py-16">
         <h2 className="text-5xl text-white font-pretendard font-bold mb-12 text-center">
@@ -34,10 +34,10 @@ export default function Home() {
           {notices.map((notice) => (
             <div
               key={notice.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 border-b-2 border-gray-800"
+              className="bg-white opacity-90 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 border-b-2 border-gray-800"
             >
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                <h3 className="text-xl truncate font-bold text-gray-900 mb-3 line-clamp-2">
                   {notice.title}
                 </h3>
                 <p className="text-gray-600 mb-4 line-clamp-3 text-sm">

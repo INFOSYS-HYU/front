@@ -16,7 +16,7 @@ const FinanceList = () => {
     const getFinanceList = async () => {
       try {
         const res = await getAllFinance();
-        // console.log(res.data.response);
+        console.log(res);
         setFinanceList(res);
         financeList && console.log(financeList);
       } catch (error) {
@@ -29,7 +29,7 @@ const FinanceList = () => {
   return (
     <div>
       <div>
-        <div className="w-finance mx-auto">
+        <div className="max-w-4xl w-full mx-auto">
           <h1 className="text-2xl font-semibold mb-6">2024년도</h1>
           <div className="w-full flex flex-wrap gap-5 mb-20">
             {financeList &&

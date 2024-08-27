@@ -54,7 +54,7 @@ export default function Home() {
               </div>
               <div className="bg-gray-100 px-6 py-4">
                 <Link
-                  to={`/notice/${notice.id}`}
+                  to={`/notice/detail/${notice.id}`}
                   className="text-gray-800 font-semibold flex items-center justify-between hover:text-black transition-colors duration-200"
                 >
                   자세히 보기

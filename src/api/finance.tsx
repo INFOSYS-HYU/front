@@ -14,8 +14,8 @@ export interface FinanceItem {
 // finance - 전체 결산안 가져오기
 export const getAllFinance = async () => {
     try {
-      const response = await axios.get<FinanceItem[]>(`${context}/api/finance`);
-      return response.data;
+      const response = await axios.get(`${context}/api/finance`);
+      return response.data.response;
     } catch (error) {
       console.error("Error fetching all finance data:", error);
       throw error;

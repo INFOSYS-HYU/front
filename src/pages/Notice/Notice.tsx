@@ -24,6 +24,7 @@ const Notice = () => {
     const getNoticeData = async () => {
       try {
         const id = Number(param.noticeId);
+        console.log(id)
         // const params = { id: id };
         const res = await getNotice(id);
         console.log(res);
@@ -62,12 +63,12 @@ const Notice = () => {
           </div>
         </div>
         <div className="w-full p-8 border-2 border-gray-4 rounded-xl flex flex-col gap-5">
-          <h1 className="text-xl font-semibold">{notice.title}</h1>
+          <h1 className="text-xl font-semibold">{example.title}</h1>
           <h2 className="text-base text-gray-1 font-semibold mb-1">
-            {notice.date}
+            {example.upload_date}
           </h2>
           <div className="min-h-28">
-            <p className="text-wrap">{notice.desc}</p>
+            <p className="text-wrap">{example.description}</p>
             {/* {notice.desc.map((item, index) => (
             ))} */}
           </div>

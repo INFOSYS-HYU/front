@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const FaqItem = ({
   title,
@@ -7,40 +8,57 @@ const FaqItem = ({
   title: string;
   description: string;
 }) => {
-  const [active, setactive] = useState<boolean>(false);
+  const [active, setActive] = useState<boolean>(false);
+
   return (
-    <div className="flex flex-col gap-5">
-      <div
-        className={`w-full rounded-xl p-5 drop-shadow-md flex duration-400 ease-in-out ${
+    <div className="flex flex-col gap-5 transition-all duration-100">
+      <motion.div
+        className={`w-full rounded-xl p-5 drop-shadow-md flex cursor-pointer ${
           active ? "bg-black" : "bg-gray-6"
         }`}
-        onClick={() => setactive(!active)}
+        onClick={() => setActive(!active)}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
       >
-        <div className={`relative mr-2 w-5 flex justify-center items-center `}>
-          <div>
-            <div
-              className={`absolute w-3 h-0.5 rounded-full rotate-45 ${
-                active ? "top-[9px] bg-white" : "left-0 bg-black"
-              }`}
-            ></div>
-            <div
-              className={`absolute w-3 h-0.5 rounded-full -rotate-45 ${
-                active ? "bottom-[9px] bg-white" : "right-0 bg-black"
-              }`}
-            ></div>
-          </div>
-        </div>
-        <h1 className={`text-xl ${active ? "text-white" : "text-darkgray"}`}>
-          {title}{" "}
-        </h1>
-      </div>
-      <p
-        className={`w-full rounded-xl bg-white p-8 drop-shadow-md text-lg duration-400 ${
-          active ? "block" : "hidden"
-        } `}
-      >
-        {description}
-      </p>
+        <motion.div
+          className="relative mr-2 w-5 flex justify-center items-center"
+          animate={{ rotate: active ? 45 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div
+            className={`absolute w-3 h-0.5 rounded-full ${
+              active ? "bg-white" : "bg-black"
+            }`}
+          />
+          <motion.div
+            className={`absolute w-3 h-0.5 rounded-full ${
+              active ? "bg-white" : "bg-black"
+            }`}
+            animate={{ rotate: active ? 90 : 0 }}
+            transition={{ duration: 0.3 }}
+          />
+        </motion.div>
+        <motion.h1
+          className={`text-xl ${active ? "text-white" : "text-darkgray"}`}
+          animate={{ color: active ? "#FFFFFF" : "#333333" }}
+        >
+          {title}
+        </motion.h1>
+      </motion.div>
+      <AnimatePresence>
+        {active && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <p className="w-full rounded-xl bg-white p-8 drop-shadow-md text-lg">
+              {description}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

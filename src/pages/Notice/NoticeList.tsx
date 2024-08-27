@@ -39,8 +39,8 @@ const NoticeList = () => {
   return (
     <>
       <Banner text="공지사항" />
-      <div className="w-noticelist mx-auto flex flex-col gap-16 mb-20">
-        <div className="w-full flex flex-col gap-5">
+      <div className="max-w-4xl w-full mx-auto flex flex-col gap-16 mb-20">
+        <div className="w-full px-4  flex flex-col gap-2">
           {noticeList.map((item) => (
             <NoticeItem
               key={item.id}

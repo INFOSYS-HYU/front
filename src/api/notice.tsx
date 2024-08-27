@@ -28,7 +28,9 @@ export const getAllNotice = async (page = 1) => {
 export const getRecentNotices = async () => {
   try {
     const response = await axios.get(`${context}/api/notice/recent`);
+    console.log(response)
     return response.data.notices;
+    
   } catch (error) {
     console.error("Error fetching recent notices:", error);
     throw error;

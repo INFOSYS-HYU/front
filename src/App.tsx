@@ -50,11 +50,11 @@ function App() {
         <Route path="/notice">
           <Route path=":page" element={<NoticeList />} />
           <Route path="detail/:noticeId" element={<Notice />} />
-        </Route>
-        <Route path="/faq" element={<Faq />} />
-        <Route path="/finance" element={<FinanceLayout />}>
-          <Route index element={<FinanceList />} />
-          <Route path=":financeId" element={<Finance />} />
+          <Route path="faq" element={<Faq />} />
+          <Route path="finance" element={<FinanceLayout />}>
+            <Route index element={<FinanceList />} />
+            <Route path=":financeId" element={<Finance />} />
+          </Route>
         </Route>
 
         <Route path="/login" element={<Login />} />

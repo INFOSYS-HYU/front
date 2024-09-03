@@ -5,22 +5,32 @@ const context = "http://localhost:3001";
 export interface InputType {
   title: string;
   content: string;
-  image?: File[];
+  img1: File[];
 }
 
 export interface NoticeType extends InputType {
-  NoticeID: number;
-  Upload_DATE: string;
+  NoticeID?: number;
+  Upload_DATE?: string;
 }
 
 export const addNotice = async (input: InputType): Promise<NoticeType> => {
   try {
-    const response = await axios.post<NoticeType>(`${context}/api/admin/notice`, input, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const formData = new FormData();
+    formData.append('title', input.title);
+    formData.append('content', input.content);
+    
+    if (input.img1) {
+      input.img1.forEach((file) => {
+        formData.append(`img1`, file);
+      });
+    }
 
+    const response = await axios.post<NoticeType>(`${context}/api/notice`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    
     console.log('공지사항이 성공적으로 추가되었습니다:', response.data);
     return response.data;
   } catch (error) {
@@ -34,21 +44,10 @@ export const addNotice = async (input: InputType): Promise<NoticeType> => {
 };
 
 
-// notice - 새 공지사항 생성
-export const createNotice = async (notice: { title: string; content: string }) => {
-  try {
-    const response = await axios.post<Notice>(`${context}/api/notice`, notice);
-    return response.data;
-  } catch (error) {
-    console.error("Error creating notice:", error);
-    throw error;
-  }
-};
-
 // notice - 공지사항 수정
 export const updateNotice = async (notice: { id: number; title: string; content: string }) => {
   try {
-    const response = await axios.put<Notice>(`${context}/api/notice/${notice.id}`, notice);
+    const response = await axios.put<NoticeType>(`${context}/api/notice/${notice.id}`, notice);
     return response.data;
   } catch (error) {
     console.error(`Error updating notice for id ${notice.id}:`, error);

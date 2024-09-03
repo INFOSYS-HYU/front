@@ -40,7 +40,6 @@ export const Calendar: React.FC = () => {
     setError(null);
     try {
       const response = await axios.get('http://localhost:3001/api/calendar');
-      console.log('API Response:', response.data); // 로그 추가
 
       if (!Array.isArray(response.data)) {
         throw new Error('API response is not an array');
@@ -49,12 +48,10 @@ export const Calendar: React.FC = () => {
       const fetchedEvents = response.data.map((event: any) => {
         const startDate = new Date(event.startDate);
         const endDate = new Date(event.endDate);
-        
         if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
           console.error('Invalid date for event:', event);
           return null;
         }
-
         return {
           id: event.id,
           title: event.title,
@@ -63,8 +60,6 @@ export const Calendar: React.FC = () => {
           endDate
         };
       }).filter((event): event is Event => event !== null);
-
-      console.log('Processed Events:', fetchedEvents); // 로그 추가
       setEvents(fetchedEvents);
     } catch (err) {
       console.error('Error fetching events:', err);

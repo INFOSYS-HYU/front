@@ -18,7 +18,7 @@ import { addNotice } from "../../../api/admin";
 interface InputType {
   title: string;
   content: string;
-  files: File[];
+  img1: File[];
 }
 
 const theme = createTheme({
@@ -43,7 +43,7 @@ const AdminAddNotice: React.FC = () => {
   const [input, setInput] = useState<InputType>({
     title: "",
     content: "",
-    files: []
+    img1: []
   });
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -53,7 +53,7 @@ const AdminAddNotice: React.FC = () => {
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setInput(prev => ({ ...prev, files: Array.from(e.target.files || []) }));
+      setInput(prev => ({ ...prev, img1: Array.from(e.target.files || []) }));
     }
   };
 
@@ -62,7 +62,7 @@ const AdminAddNotice: React.FC = () => {
     try {
       const result = await addNotice(input);
       console.log('공지사항이 성공적으로 추가되었습니다:', result);
-      setInput({ title: "", content: "", files: [] });
+      setInput({ title: "", content: "", img1: [] });
       // TODO: 성공 메시지 표시
     } catch (error) {
       console.error('공지사항 추가 실패:', error);
@@ -119,7 +119,7 @@ const AdminAddNotice: React.FC = () => {
                 />
               </Button>
               <List>
-                {input.files.map((file, index) => (
+                {input.img1.map((file, index) => (
                   <ListItem key={index}>
                     <ListItemText primary={file.name} />
                   </ListItem>

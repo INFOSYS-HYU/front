@@ -5,17 +5,6 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Slider from "react-slick";
 
-const example = {
-  title: "공지사항 제목",
-  upload_date: "2024.12.20",
-  description: [
-    "일시: ",
-    "장소: ",
-    "내용: There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
-  ],
-  image_url: ["1.jpg", "2.jpg", "5.png"],
-};
-
 const Notice = () => {
   const param = useParams();
   const [notice, setNotice] = useState<NoticeType>();
@@ -24,10 +13,7 @@ const Notice = () => {
     const getNoticeData = async () => {
       try {
         const id = Number(param.noticeId);
-        console.log(id)
-        // const params = { id: id };
         const res = await getNotice(id);
-        console.log(res);
         setNotice(res);
       } catch (error) {
         console.log(error);
@@ -45,16 +31,17 @@ const Notice = () => {
   };
 
   return (
+    notice && 
     <>
       <Banner text="공지사항" />
-      <div className="w-notice mx-auto flex flex-col gap-16 mb-20">
+      <div className="max-w-4xl mx-auto flex flex-col gap-16 mb-20">
         <div className="w-full h-notice rounded-md mx-auto">
-          <div className="slider-container w-full h-notice rounded-md mx-auto">
+          <div className="slider-container w-notice h-notice rounded-md mx-auto">
             <Slider {...settings}>
-              {example.image_url.map((item, index) => (
+              {notice.img1?.map((item, index) => (
                 <img
                   key={index}
-                  src={`/assets/images/${item}`}
+                  src={item}
                   alt="사진"
                   className="w-full h-notice rounded-md"
                 />
@@ -63,14 +50,12 @@ const Notice = () => {
           </div>
         </div>
         <div className="w-full p-8 border-2 border-gray-4 rounded-xl flex flex-col gap-5">
-          <h1 className="text-xl font-semibold">{example.title}</h1>
+          <h1 className="text-xl font-semibold">{notice?.title}</h1>
           <h2 className="text-base text-gray-1 font-semibold mb-1">
-            {example.upload_date}
+            {notice?.date}
           </h2>
           <div className="min-h-28">
-            <p className="text-wrap">{example.description}</p>
-            {/* {notice.desc.map((item, index) => (
-            ))} */}
+            <p className="text-wrap">{notice?.content}</p>
           </div>
         </div>
         <div className="flex justify-center">

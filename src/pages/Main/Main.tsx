@@ -13,7 +13,6 @@ export default function Home() {
     async function fetchNotices() {
       try {
         const response = await getRecentNotices();
-        console.log(response)
         setNotices(response);
       } catch (error) {
         console.error("공지사항을 불러오는 데 실패했습니다:", error);

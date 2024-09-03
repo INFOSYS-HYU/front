@@ -12,7 +12,7 @@ const NavigationBar = () => {
 
   const navItems = [
     { title: "About us", path: "/about" },
-    { title: "Notice", path: "/notice" },
+    { title: "Notice", path: "/notice/1" },
     { title: "Activity", path: "/activity" },
     { title: "Wiki", path: "/wiki" },
     { title: "Login", path: "/login" }

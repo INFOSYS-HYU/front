@@ -8,7 +8,7 @@ export interface NoticeType {
   title: string;
   content: string;
   date: string;
-  img?: string[];
+  img1?: string[];
 }
 
 
@@ -16,7 +16,7 @@ export interface NoticeType {
 export const getAllNotice = async (page = 1) => {
   try {
     const response = await axios.get<{ notices: NoticeType[]; totalPages: number; currentPage: number }>(`${context}/api/notice/${page}`);
-    console.log(response)
+    console.log(response.data)
     return response.data;
   } catch (error) {
     console.error(`Error fetching notices for page ${page}:`, error);
@@ -28,9 +28,7 @@ export const getAllNotice = async (page = 1) => {
 export const getRecentNotices = async () => {
   try {
     const response = await axios.get(`${context}/api/notice/recent`);
-    console.log(response)
-    return response.data.notices;
-    
+    return response.data;
   } catch (error) {
     console.error("Error fetching recent notices:", error);
     throw error;
@@ -41,6 +39,7 @@ export const getRecentNotices = async () => {
 export const getNotice = async (id: number) => {
   try {
     const response = await axios.get<NoticeType>(`${context}/api/notice/detail/${id}`);
+    console.log(response.data)
     return response.data;
   } catch (error) {
     console.error(`Error fetching notice for id ${id}:`, error);

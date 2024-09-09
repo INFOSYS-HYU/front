@@ -5,7 +5,6 @@ import "./index.css";
 import { RecoilRoot } from "recoil";
 import { BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./utils/scrollTop.tsx";
-import { AuthProvider } from "./services/AuthProvider.tsx";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./theme.ts";
 
@@ -13,12 +12,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <ThemeProvider theme={theme}>
     <React.StrictMode>
       <BrowserRouter>
-        <AuthProvider>
-          <RecoilRoot>
-            <ScrollToTop />
+        <RecoilRoot>
+          <ScrollToTop />
             <App />
-          </RecoilRoot>
-        </AuthProvider>
+        </RecoilRoot>
       </BrowserRouter>
     </React.StrictMode>
   </ThemeProvider>

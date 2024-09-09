@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { auth } from "../../services/firebase.ts";
-import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 interface UserData {

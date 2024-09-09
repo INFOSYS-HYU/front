@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from '../services/AuthProvider.tsx';
+import { useAuth } from '../hooks/useAuth';
 
 interface PrivateRouteProps {
-  children: ReactNode
+  children: React.ReactNode;
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
@@ -13,11 +13,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
     return <div>Loading...</div>;
   }
 
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
-
-  return <>{children}</>;
+  return user ? <>{children}</> : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;

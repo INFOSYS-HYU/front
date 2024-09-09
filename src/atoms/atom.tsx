@@ -2,9 +2,6 @@ import { atom } from 'recoil';
 import { GalleryItem } from '@/types/gallery';
 import { Event } from '@/types/calendar';
 
-
-
-
 //캘린더
 export const calendarDateState = atom<Date>({
     key: 'calendarDateState',
@@ -34,3 +31,27 @@ export const galleryModalSelectState = atom<GalleryItem | null>({
     key: 'galleryModalSelectState',
     default: null,
 })
+
+//auth
+export interface User {
+    id: string;
+    name: string;
+    email: string;
+  }
+  
+  export interface AuthState {
+    user: User | null;
+    accessToken: string | null;
+    refreshToken: string | null;
+    loading: boolean;
+  }
+  
+  export const authState = atom<AuthState>({
+    key: 'authState',
+    default: {
+      user: null,
+      accessToken: localStorage.getItem('accessToken'),
+      refreshToken: localStorage.getItem('refreshToken'),
+      loading: true,
+    },
+  });

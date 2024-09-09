@@ -10,7 +10,6 @@ import Notice from "./pages/Notice/Notice.tsx";
 import Faq from "./pages/Faq/Faq.tsx";
 import Login from "./pages/Auth/login.tsx";
 import Mypage from "./pages/Auth/Mypage.tsx";
-import AdminRoute from "./services/AdminRoute.tsx";
 import FinanceList from "./pages/Finance/FinanceList.tsx";
 import Finance from "./pages/Finance/Finance.tsx";
 import Admin from "./pages/Admin/Admin.tsx";
@@ -24,6 +23,8 @@ import AdminGallery from "./pages/Admin/Gallery/Gallery.tsx";
 import AdminLayout from "./pages/Admin/AdminLayout.tsx";
 import FinanceLayout from "./pages/Finance/FinanceLayout.tsx";
 import CalendarPage from "./pages/Activitiy/Calendar.tsx";
+import CompleteSignup from "./components/CompleteSignup.tsx";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function Layout() {
   return (
@@ -35,8 +36,10 @@ function Layout() {
   );
 }
 function App() {
-  return (
+  return (<GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID!}>
+
     <Routes>
+
       <Route path="/" element={<Layout />}>
         <Route index element={<Main />} />
         <Route path="/about">
@@ -56,8 +59,8 @@ function App() {
             <Route path=":financeId" element={<Finance />} />
           </Route>
         </Route>
-
         <Route path="/login" element={<Login />} />
+        <Route path="/complete-signup" element={<CompleteSignup />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Admin />} />
@@ -72,6 +75,8 @@ function App() {
         </Route>
       </Route>
     </Routes>
+  </GoogleOAuthProvider>
+
   );
 }
 

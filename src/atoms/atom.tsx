@@ -41,8 +41,8 @@ export interface User {
   
   export interface AuthState {
     user: User | null;
-    accessToken: string | null;
-    refreshToken: string | null;
+    accessToken?: string | null;
+    refreshToken?: string | null;
     loading: boolean;
   }
   

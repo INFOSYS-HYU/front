@@ -1,28 +1,40 @@
-import { User } from '@/atoms/atom.tsx';
-import axios from '../utils/axios.ts';
+import { User } from "@/atoms/atom";
+import axios from "../utils/axios";
 
-export const loginWithGoogle = async (tokenId: string) => {
-  const response = await axios.post<{ user: any; accessToken: string; refreshToken: string }>('/auth/google', { tokenId });
-  return response.data;
-};
+interface LoginResponse {
+  user: User;
+  accessToken: string;
+}
 
-export const refreshToken = async () => {
-  const refreshToken = localStorage.getItem('refreshToken');
-  const response = await axios.post<{ accessToken: string }>('/auth/refresh', { refreshToken });
-  return response.data;
-};
-
-export const completeSignup = async (userId: string, additionalInfo: any) => {
-    const response = await axios.post<User>(`/auth/complete-signup/${userId}`, additionalInfo);
-    return response.data;
-  };
-  
-export const checkUserExists = async (accessToken: string) => {
-    console.log(`Authorization: Bearer ${accessToken}`    )
-    const response = await axios.get<{ exists: boolean; userId?: string }>('/login', {
+export const loginWithGoogle = async (token: string): Promise<LoginResponse> => {
+  try {
+    const response = await axios.get<LoginResponse>('/auth/user', {
       headers: {
-        'Authorization': `Bearer ${accessToken}`
+        Authorization: `Bearer ${token}`
       }
     });
     return response.data;
-  };
+  } catch (error) {
+    console.error("Login failed:", error);
+    throw new Error("Failed to login with Google");
+  }
+};
+
+export const refreshToken = async (): Promise<string> => {
+  try {
+    const response = await axios.post<{ accessToken: string }>('/auth/refresh-token');
+    return response.data.accessToken;
+  } catch (error) {
+    console.error("Token refresh failed:", error);
+    throw new Error("Failed to refresh token");
+  }
+};
+
+export const logout = async (): Promise<void> => {
+  try {
+    await axios.post('/auth/logout');
+  } catch (error) {
+    console.error("Logout failed:", error);
+    throw new Error("Failed to logout");
+  }
+};

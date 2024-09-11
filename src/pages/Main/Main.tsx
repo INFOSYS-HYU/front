@@ -13,7 +13,8 @@ export default function Home() {
     async function fetchNotices() {
       try {
         const response = await getRecentNotices();
-        setNotices(response.notices);
+        setNotices(response);
+        console.log(response)
       } catch (error) {
         console.error("공지사항을 불러오는 데 실패했습니다:", error);
       }
@@ -30,7 +31,7 @@ export default function Home() {
           공지사항
         </h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {notices.map((notice) => (
+          {notices?.map((notice) => (
             <div
               key={notice.id}
               className="bg-white opacity-90 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 border-b-2 border-gray-800"

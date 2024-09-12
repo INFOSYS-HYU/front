@@ -38,9 +38,14 @@ const navigate = useNavigate()
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <Button onClick={() => googleLogin()}>
-        Sign in with Google
-      </Button>
+      <div className="border rounded-lg shadow-lg p-12 text-center w-[350px]">
+        <h1 className="text-xl font-bold mb-8">로그인</h1>
+        <Button onClick={() => googleLogin()}
+        variant="contained"
+        className="bg-black text-white w-full mb-4">
+        한양대 메일로 로그인
+       </Button>
+      </div>
     </div>
   );
 };

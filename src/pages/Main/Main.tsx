@@ -24,7 +24,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative z-1 bg-gradient-to-b from-gray-200 to-gray-900">
+    <main className="relative z-1 bg-black">
       <BgMain />
       <div className="max-w-5xl mx-auto px-4 py-16">
         <h2 className="text-5xl text-white font-pretendard font-bold mb-12 text-center">

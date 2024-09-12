@@ -18,13 +18,13 @@ const navigate = useNavigate()
           code: codeResponse.code,
         });
         
-        const { accessToken, user, refreshToken } = data;
+        const { access_token, user, refresh_token } = data;
 
-        localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('refreshToken', refresh_token);
         setAuth({
           user,
-          accessToken,
-          refreshToken,
+          access_token,
+          refresh_token,
           loading: false,
         });
         navigate('/')

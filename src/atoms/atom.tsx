@@ -34,7 +34,7 @@ export const galleryModalSelectState = atom<GalleryItem | null>({
 
 //auth
 export interface User {
-    id: string;
+    user_id: string;
     name: string;
     email: string;
   }
@@ -50,7 +50,7 @@ export interface User {
     key: 'authState',
     default: {
       user: null,
-      accessToken: localStorage.getItem('accessToken'),
+      accessToken: null,
       refreshToken: localStorage.getItem('refreshToken'),
       loading: true,
     },

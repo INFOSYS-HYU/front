@@ -38,43 +38,43 @@ function Layout() {
 function App() {
   return (
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID!}>
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Main />} />
-        <Route path="/about">
-          <Route path="" element={<About />} />
-          <Route path="organization" element={<Organization />} />
-        </Route>
-        <Route path="/activity">
-          <Route path="gallery" element={<Gallery />} />
-          <Route path="calendar" element={<CalendarPage />} />
-        </Route>
-        <Route path="/notice">
-          <Route path=":page" element={<NoticeList />} />
-          <Route path="detail/:noticeId" element={<Notice />} />
-          <Route path="faq" element={<Faq />} />
-          <Route path="finance" element={<FinanceLayout />}>
-            <Route index element={<FinanceList />} />
-            <Route path=":financeId" element={<Finance />} />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Main />} />
+          <Route path="/about">
+            <Route path="" element={<About />} />
+            <Route path="organization" element={<Organization />} />
+          </Route>
+          <Route path="/activity">
+            <Route path="gallery" element={<Gallery />} />
+            <Route path="calendar" element={<CalendarPage />} />
+          </Route>
+          <Route path="/notice">
+            <Route path=":page" element={<NoticeList />} />
+            <Route path="detail/:noticeId" element={<Notice />} />
+            <Route path="faq" element={<Faq />} />
+            <Route path="finance" element={<FinanceLayout />}>
+              <Route index element={<FinanceList />} />
+              <Route path=":financeId" element={<Finance />} />
+            </Route>
+          </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/complete-signup" element={<CompleteSignup />} />
+          <Route path="/mypage" element={<Mypage />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Admin />} />
+            <Route path="notice" element={<AdminNoticeLayout />}>
+              <Route path=":paginationId" element={<AdminNoticeList />} />
+              <Route path=":noticeId" element={<AdminNotice />} />
+              <Route path="add" element={<AdminAddNotice />} />
+            </Route>
+            <Route path="finance" element={<AdminFinance />} />
+            <Route path="calendar" element={<AdminCalendar />} />
+            <Route path="gallery" element={<AdminGallery />} />
           </Route>
         </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/complete-signup" element={<CompleteSignup />} />
-        <Route path="/mypage" element={<Mypage />} />
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<Admin />} />
-          <Route path="notice" element={<AdminNoticeLayout />}>
-            <Route path=":paginationId" element={<AdminNoticeList />} />
-            <Route path=":noticeId" element={<AdminNotice />} />
-            <Route path="add" element={<AdminAddNotice />} />
-          </Route>
-          <Route path="finance" element={<AdminFinance />} />
-          <Route path="calendar" element={<AdminCalendar />} />
-          <Route path="gallery" element={<AdminGallery />} />
-        </Route>
-      </Route>
-    </Routes>
-  </GoogleOAuthProvider>
+      </Routes>
+    </GoogleOAuthProvider>
 
   );
 }

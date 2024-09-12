@@ -1,47 +1,48 @@
-import React, { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
-import { loginWithGoogle } from '../../services/api';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { useGoogleLogin } from '@react-oauth/google';
+import { useRecoilState } from 'recoil';
+import { AuthState, authState } from '@/atoms/atom';
+import axios from 'axios';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
 
 const Login: React.FC = () => {
-    const { login } = useAuth();
-    const navigate = useNavigate();
-    const location = useLocation();
+  const [, setAuth] = useRecoilState<AuthState>(authState);
+const navigate = useNavigate()
+  const googleLogin = useGoogleLogin({
+    flow: 'auth-code',
+    onSuccess: async (codeResponse) => {
+      try {
+        const { data } = await axios.post('http://localhost:3001/api/auth/google/callback', {
+          code: codeResponse.code,
+        });
+        
+        const { accessToken, user, refreshToken } = data;
 
-    useEffect(() => {
-        // URL에서 액세스 토큰 파라미터 확인
-        const params = new URLSearchParams(location.search);
-        const token = params.get('token');
+        localStorage.setItem('refreshToken', refreshToken);
+        setAuth({
+          user,
+          accessToken,
+          refreshToken,
+          loading: false,
+        });
+        navigate('/')
+        console.log('로그인 성공:', data);
+      } catch (error) {
+        console.error('로그인 실패:', error);
+      }
+    },
+    onError: (error) => console.error('구글 로그인 에러:', error),
+  });
 
-        if (token) {
-            handleLoginSuccess(token);
-        }
-    }, [location]);
-
-    const handleLoginSuccess = async (token: string) => {
-        try {
-            const userData = await loginWithGoogle(token);
-            login(userData);
-            navigate('/dashboard');
-        } catch (error) {
-            console.error('Login failed', error);
-            // 에러 처리 로직 (예: 에러 메시지 표시)
-        }
-    };
-
-
-    return (
-        <div className="flex justify-center items-center h-screen">
-            <Link
-                to={'http://localhost:3001/api/auth/google'}
-                target='_blank'
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >
-                Sign in with Google
-            </Link>
-        </div>
-    );
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <Button onClick={() => googleLogin()}>
+        Sign in with Google
+      </Button>
+    </div>
+  );
 };
 
 export default Login;
